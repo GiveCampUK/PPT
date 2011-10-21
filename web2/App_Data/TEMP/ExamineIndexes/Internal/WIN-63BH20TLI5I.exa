@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-16"?>
+<dictionary>
+  <item>
+    <key>
+      <EXAFields>Name</EXAFields>
+    </key>
+    <value><![CDATA[WIN-63BH20TLI5I]]></value>
+  </item>
+  <item>
+    <key>
+      <EXAFields>Created</EXAFields>
+    </key>
+    <value><![CDATA[2011-10-21 13:06:34.898]]></value>
+  </item>
+  <item>
+    <key>
+      <EXAFields>Updated</EXAFields>
+    </key>
+    <value><![CDATA[2011-10-21 20:47:35.133]]></value>
+  </item>
+  <item>
+    <key>
+      <EXAFields>IsMaster</EXAFields>
+    </key>
+    <value><![CDATA[True]]></value>
+  </item>
+</dictionary>
