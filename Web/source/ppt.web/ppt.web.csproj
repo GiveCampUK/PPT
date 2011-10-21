@@ -175,6 +175,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\2a5eb6f3-dffe-49da-9f56-3c9259d0b8e7\package.xml" />
     <Content Include="App_Data\access.config" />
     <Content Include="App_Data\givecampuk.mdf" />
     <Content Include="App_Data\givecampuk_log.ldf">
@@ -184,6 +185,8 @@
     <Content Include="App_Data\packages\installed\installedPackages.config" />
     <Content Include="App_Browsers\Form.browser" />
     <Content Include="App_Browsers\w3cvalidator.browser" />
+    <Content Include="xslt\umb2ndLevelNavigation.xslt" />
+    <Content Include="xslt\umbTopNavigation.xslt" />
     <None Include="App_Data\TEMP\ClientDependency\1_02ade53d5fef4ea2b3e891eb0c55e84e.cdJ" />
     <None Include="App_Data\TEMP\ClientDependency\1_2df934e4b68f48a89cd798d8d5a8516f.cdC" />
     <None Include="App_Data\TEMP\ClientDependency\1_70d931b07bdc4e4abf16cceb555c2741.cdJ" />
@@ -220,11 +223,14 @@
     <Content Include="config\UrlRewriting.config" />
     <Content Include="config\xsltExtensions.config" />
     <None Include="data\vistadb\_placeholder" />
-    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="masterpages\umbHomepage.master" />
+    <Content Include="masterpages\umbMaster.master" />
+    <Content Include="masterpages\umbTextpage.master" />
     <Content Include="App_Data\TEMP\ClientDependency\WIN-63BH20TLI5I-b303910bf05af4f5bcd7cc0be6932b38-map.xml" />
     <Content Include="App_Data\Umbraco.sdf" />
     <Content Include="config\splashes\booting.aspx" />
     <Content Include="config\splashes\noNodes.aspx" />
+    <Content Include="css\Starterkit.css" />
     <Content Include="favicon.ico" />
     <Content Include="install\default.aspx" />
     <Content Include="install\steps\database.ascx" />
@@ -1712,12 +1718,9 @@
     <Folder Include="App_Data\ClientDependency\" />
     <Folder Include="App_Data\ExamineIndexes\" />
     <Folder Include="App_Data\preview\" />
-    <Folder Include="css\" />
     <Folder Include="install\steps\Definitions\" />
     <Folder Include="macroScripts\" />
-    <Folder Include="masterpages\" />
     <Folder Include="media\" />
-    <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="python\" />
     <Folder Include="scripts\" />
     <Folder Include="umbraco\ActionHandlers\" />
@@ -1730,7 +1733,6 @@
     <Folder Include="umbraco\Web\UI\" />
     <Folder Include="umbraco\xslt\eXslt\" />
     <Folder Include="usercontrols\" />
-    <Folder Include="xslt\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
