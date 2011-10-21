@@ -9,3 +9,4 @@ _ReSharper.*
 *.dotcover
 
 Web/source/ppt.web/App_Data/TEMP/*
+*.LDF
