@@ -176,6 +176,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\access.config" />
+    <Content Include="App_Data\givecampuk.mdf" />
+    <Content Include="App_Data\givecampuk_log.ldf">
+      <DependentUpon>givecampuk.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\packages\created\createdPackages.config" />
     <Content Include="App_Data\packages\installed\installedPackages.config" />
     <Content Include="App_Browsers\Form.browser" />
@@ -197,6 +201,10 @@
     <None Include="App_Data\TEMP\ExamineIndexes\Internal\WIN-63BH20TLI5I.exa" />
     <None Include="App_Data\TEMP\ExamineIndexes\Internal\WIN-63BH20TLI5I.lck" />
     <Content Include="App_Data\umbraco.config" />
+    <Content Include="App_Data\UmbracoDB.mdf" />
+    <Content Include="App_Data\UmbracoDB_log.LDF">
+      <DependentUpon>UmbracoDB.mdf</DependentUpon>
+    </Content>
     <Content Include="config\404handlers.config" />
     <Content Include="config\ClientDependency.config" />
     <Content Include="config\Dashboard.config" />
