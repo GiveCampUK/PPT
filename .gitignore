@@ -1,6 +1,6 @@
 # VS Bits
-obj
-bin
+Web/source/ppt.web/obj
+Web/source/ppt.web/bin
 *.suo
 
 # ReSharper
