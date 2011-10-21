@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<umbPackage>
+  <enableSkins>true</enableSkins>
+  <files>
+    <file>
+      <guid>umb2ndLevelNavigation.xslt</guid>
+      <orgPath>/xslt</orgPath>
+      <orgName>umb2ndLevelNavigation.xslt</orgName>
+    </file>
+    <file>
+      <guid>umbTopNavigation.xslt</guid>
+      <orgPath>/xslt</orgPath>
+      <orgName>umbTopNavigation.xslt</orgName>
+    </file>
+  </files>
+  <info>
+    <package>
+      <name>Simple Starter Kit</name>
+      <version>1.0</version>
+      <license url="http://www.opensource.org/licenses/mit-license.php">MIT license</license>
+      <url>http://umbraco.org</url>
+      <requirements>
+        <major>3</major>
+        <minor>0</minor>
+        <patch>0</patch>
+      </requirements>
+    </package>
+    <author>
+      <name>Umbraco HQ</name>
+      <website>http://umbraco.org</website>
+    </author>
+    <readme><![CDATA[The Simple Starter Kit is a basic site built with Umbraco best practices and is a great place to start with Umbraco.]]></readme>
+  </info>
+  <Documents>
+    <DocumentSet importMode="root">
+      <umbHomepage id="1050" parentID="-1" level="1" writerID="0" creatorID="0" nodeType="1047" template="1044" sortOrder="2" createDate="2008-05-02T09:52:36" updateDate="2010-12-21T09:02:41" nodeName="Simple website" urlName="simple-website" writerName="paul" creatorName="paul" path="-1,1050" isDoc="">
+        <bodyText><![CDATA[
+<p>The Simple Starter Kit gives you a bare-bones website that
+introduces you to a set of well-defined conventions for building an
+Umbraco website.</p>
+
+<p>The Simple website is very basic in form and provided without
+any design or functionality - unless you add a Skin, of course. By
+installing the Simple Starter Kit, you'll begin with a minimal site
+built on best practices. You'll also enjoy the benefits of speaking
+the same "language" as the rest of the Umbraco community by using
+common properties and naming conventions.</p>
+
+<p>Now that you know what the Simple site is, it is time to get
+started using Umbraco.</p>
+]]></bodyText>
+        <siteName>Simple website</siteName>
+        <siteDescription><![CDATA[Off to a great start]]></siteDescription>
+        <umbTextpage id="1051" parentID="1050" level="2" writerID="0" creatorID="0" nodeType="1048" template="1046" sortOrder="1" createDate="2008-06-01T23:12:54" updateDate="2010-12-21T09:13:28" nodeName="Installing modules" urlName="installing-modules" writerName="paul" creatorName="paul" path="-1,1050,1051" isDoc="">
+          <bodyText><![CDATA[
+<p>Umbraco modules encapsulate specific bits of advanced
+functionality that are easily added to your website.</p>
+
+<p>Once installed, Umbraco modules are open source and easy to
+customize if you want to modify the behavior for your specific
+needs.<br />
+ Because Umbraco modules are provided under the MIT license you are
+free to use and modify them any way you want, with no strings
+attached.</p>
+
+<p>To add Umbraco modules to your website, go to the
+<strong>Settings</strong> section, expand the
+<strong>Templates</strong> item, select the <strong>Starterkit
+Master</strong> template, then click the <strong>Customize
+Skin</strong> button on the toolbar.</p>
+
+<p>Umbraco modules are available for various kinds of navigation, a
+sitemap, social media feeds, and a contact form. The list of
+available Umbraco modules is growing rapidly and is automatically
+updated from a central source, always fresh and current.</p>
+
+<p><a href="http://umbraco.org/get-started"
+title="Get Started with Umbraco">Get more information</a> about the
+umbraco way.</p>
+]]></bodyText>
+          <umbracoNaviHide>0</umbracoNaviHide>
+        </umbTextpage>
+        <umbTextpage id="1052" parentID="1050" level="2" writerID="0" creatorID="0" nodeType="1048" template="1046" sortOrder="2" createDate="2008-06-01T23:14:52" updateDate="2010-12-21T09:17:40" nodeName="Go further" urlName="go-further" writerName="paul" creatorName="paul" path="-1,1050,1052" isDoc="">
+          <bodyText><![CDATA[
+<p>The Simple Starter Kit only scratches the surface of what's
+possible with Umbraco. Below the Simple Starter Kit and its modules
+lies a great architecture that lets you implement whatever you
+need.</p>
+
+<p>With Umbraco you've finally got a solid, open and reliable
+platform for websites as basic as the Simple site, and Umbraco can
+be rapidly expanded to support multi-language websites,
+collaboration platforms and intra/extranets, to name just a
+few.</p>
+
+<p>Advanced functionality is created with Umbraco macros, built
+with XSLT and Umbraco's award-winning .NET integration, including
+full support for any .NET User or Custom control. Create and
+integrate your own .NET macros in mere minutes with point and click
+simplicity. Simply copy your controls to the Umbraco website, go to
+the <strong>Developer</strong> section and create a new macro,
+selecting your control from the list.</p>
+
+<p>You can also use <a
+href="http://umbraco.org/help-and-support/video-tutorials/getting-started/working-with-webmatrix"
+ title="Working with Razor">Microsoft's Razor</a> syntax to quickly
+add dynamic functionality to your site.</p>
+
+<p>We've also gathered the best community macros into a repository
+that's also accessed from the <strong>Developer</strong> section,
+in the <strong>Packages</strong> area. You can find more
+information <a
+href="http://umbraco.org/help-and-support/video-tutorials/introduction-to-umbraco/sitebuilder-introduction/what-are-macros"
+ title="About creating Umbraco macros">about creating macros</a>,
+on the Umbraco website.</p>
+
+<p>The sky is the limit with Umbraco, and you have the benefit a
+friendly community, training, and guaranteed support. Find out how
+to <a href="http://umbraco.org/help-and-support"
+title="Get Umbraco Support">get help</a>.</p>
+]]></bodyText>
+          <umbracoNaviHide>0</umbracoNaviHide>
+        </umbTextpage>
+        <umbTextpage id="1053" parentID="1050" level="2" writerID="0" creatorID="0" nodeType="1048" template="1046" sortOrder="3" createDate="2008-06-01T23:11:56" updateDate="2010-12-21T09:12:02" nodeName="Getting started" urlName="getting-started" writerName="paul" creatorName="paul" path="-1,1050,1053" isDoc="">
+          <bodyText><![CDATA[
+<p>You've installed Umbraco and the basic Simple website.</p>
+
+<p>Edit the text on the homepage and create a site structure by
+adding new texpages to your site. This is all done in the
+<strong>Content</strong> section.</p>
+
+<p>If you find the editing options provided by the Simple site too
+limited for you needs, simply add more properties to the page by
+going to the <strong>Settings</strong> section, expanding the
+<strong>Document Types</strong> item and adding new properties on
+the <strong>Generic Properties</strong> tab. You can find more
+information about <a
+href="http://umbraco.org/help-and-support/video-tutorials/introduction-to-umbraco/sitebuilder-introduction/document-types"
+ title="About Umbraco Document Types">document types and
+properties</a> at the <a href="http://umbraco.org"
+title="The Umbraco Website">Umbraco website</a>.</p>
+
+<p>You'll probably want to personalize your site by changing the
+current design. This is also done in the <strong>Settings</strong>
+section, either by editing the CSS styles and HTML templates or by
+selecting and applying a Skin. Umbraco uses master templates, so
+the main, common markup is placed in the <strong>Starterkit
+Master</strong> template, while the Homeage and Textpage have
+separate templates for their unique layouts. You can find more
+information about <a
+href="http://umbraco.org/help-and-support/video-tutorials/introduction-to-umbraco/sitebuilder-introduction/templates"
+ title="Umbraco Templates and Stylesheets">templates and css</a> in
+umbraco at the umbraco website.</p>
+
+<p>Once you're happy with your site's design, you might want to add
+more functionality, such as automated navigation. This is done by
+<a
+href="http://umbraco.org/help-and-support/video-tutorials/getting-started"
+ title="Umbraco Modules">installing Umbraco modules</a>.</p>
+]]></bodyText>
+          <umbracoNaviHide>0</umbracoNaviHide>
+        </umbTextpage>
+      </umbHomepage>
+    </DocumentSet>
+  </Documents>
+  <DocumentTypes>
+    <DocumentType>
+      <Info>
+        <Name>Homepage</Name>
+        <Alias>umbHomepage</Alias>
+        <Icon>.sprTreeFolder</Icon>
+        <Thumbnail>folder.png</Thumbnail>
+        <Description>The homepage of a starter kit website.</Description>
+        <AllowedTemplates>
+          <Template>umbHomepage</Template>
+        </AllowedTemplates>
+        <DefaultTemplate>umbHomepage</DefaultTemplate>
+      </Info>
+      <Structure>
+      	<DocumentType>umbTextpage</DocumentType> 
+      </Structure>
+      <GenericProperties>
+        <GenericProperty>
+          <Name>Body text</Name>
+          <Alias>bodyText</Alias>
+          <Type>5e9b75ae-face-41c8-b47e-5f4b0fd82f83</Type>
+          <Definition>ca90c950-0aff-4e72-b976-a30b1ac57dad</Definition>
+          <Tab>Content</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Site Name</Name>
+          <Alias>siteName</Alias>
+          <Type>ec15c1e5-9d90-422a-aa52-4f7622c63bea</Type>
+          <Definition>0cc0eba1-9960-42c9-bf9b-60e150b429ae</Definition>
+          <Tab>Site</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Site Description</Name>
+          <Alias>siteDescription</Alias>
+          <Type>67db8357-ef57-493e-91ac-936d305e0f2a</Type>
+          <Definition>c6bac0dd-4ab9-45b1-8e30-e4b619ee5da3</Definition>
+          <Tab>Site</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+      </GenericProperties>
+      <Tabs>
+        <Tab>
+          <Id>6</Id>
+          <Caption>Site</Caption>
+        </Tab>
+        <Tab>
+          <Id>7</Id>
+          <Caption>Content</Caption>
+        </Tab>
+      </Tabs>
+    </DocumentType>
+    <DocumentType>
+      <Info>
+        <Name>Textpage</Name>
+        <Alias>umbTextpage</Alias>
+        <Icon>.sprTreeDoc</Icon>
+        <Thumbnail>doc.png</Thumbnail>
+        <Description>This is the standard content page for a starter kit website.</Description>
+        <AllowedTemplates>
+          <Template>umbTextpage</Template>
+        </AllowedTemplates>
+        <DefaultTemplate>umbTextpage</DefaultTemplate>
+      </Info>
+      <Structure>
+        <DocumentType>umbTextpage</DocumentType>
+      </Structure>
+      <GenericProperties>
+        <GenericProperty>
+          <Name>Body Text</Name>
+          <Alias>bodyText</Alias>
+          <Type>5e9b75ae-face-41c8-b47e-5f4b0fd82f83</Type>
+          <Definition>ca90c950-0aff-4e72-b976-a30b1ac57dad</Definition>
+          <Tab>Content</Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+        <GenericProperty>
+          <Name>Hide in navigation</Name>
+          <Alias>umbracoNaviHide</Alias>
+          <Type>38b352c1-e9f8-4fd8-9324-9a2eab06d97a</Type>
+          <Definition>92897bc6-a5f3-4ffe-ae27-f2e7e33dda49</Definition>
+          <Tab>
+          </Tab>
+          <Mandatory>False</Mandatory>
+          <Validation>
+          </Validation>
+          <Description><![CDATA[]]></Description>
+        </GenericProperty>
+      </GenericProperties>
+      <Tabs>
+        <Tab>
+          <Id>8</Id>
+          <Caption>Content</Caption>
+        </Tab>
+      </Tabs>
+    </DocumentType>
+  </DocumentTypes>
+  <Templates>
+    <Template>
+      <Name>Homepage</Name>
+      <Alias>umbHomepage</Alias>
+      <Master>umbMaster</Master>
+      <Design><![CDATA[<%@ Master Language="C#" MasterPageFile="~/masterpages/umbMaster.master" AutoEventWireup="true" %>
+<asp:Content ContentPlaceHolderID="cp_content" runat="server">
+  <div id="content" class="frontPage">
+    <umbraco:Item runat="server" field="bodyText"/>
+  </div>
+</asp:Content>]]></Design>
+    </Template>
+    <Template>
+      <Name>Starterkit Master</Name>
+      <Alias>umbMaster</Alias>
+      <Design><![CDATA[<%@ Master Language="C#" MasterPageFile="~/umbraco/masterpages/default.master" AutoEventWireup="true" %>
+<asp:Content ContentPlaceHolderID="ContentPlaceHolderDefault" runat="server">
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"[]> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head id="head" runat="server">
+    
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <title><asp:placeholder runat="server"><umbraco:Item runat="server" field="pageName" /> - <umbraco:Item runat="server" field="siteName" recursive="true" /></asp:placeholder></title>
+    
+  <link rel="stylesheet" type="text/css" href="/css/Starterkit.css" /> 
+  
+  <umbraco:Macro Alias="BlogRssFeedLink" runat="server"></umbraco:Macro>
+    
+  <asp:contentplaceholder id="cp_head" runat="server" />
+</head>
+  <body>    
+    <div id="main">
+      
+      <asp:contentplaceholder id="cp_top" runat="server">
+        <div id="top">
+          <h1 id="siteName"><a href="/"><umbraco:Item runat="server" field="siteName" recursive="true" /></a></h1>
+          <h2 id="siteDescription"><umbraco:Item runat="server" field="siteDescription" recursive="true" /></h2>
+        
+          <umbraco:Macro Alias="umbTopNavigation" runat="server" />
+        </div>
+      </asp:contentplaceholder>
+            
+      <div id="body" class="clearfix">
+          <form id="RunwayMasterForm" runat="server">
+            <asp:ContentPlaceHolder ID="cp_content" runat="server"></asp:ContentPlaceHolder>
+          </form>
+      </div> 
+      
+      <asp:contentplaceholder id="cp_footer" runat="server">
+        <div id="footer"></div>
+      </asp:contentplaceholder>
+    </div>
+  </body>
+</html> 
+</asp:content>]]></Design>
+    </Template>
+    <Template>
+      <Name>Textpage</Name>
+      <Alias>umbTextpage</Alias>
+      <Master>umbMaster</Master>
+      <Design><![CDATA[<%@ Master Language="C#" MasterPageFile="~/masterpages/umbMaster.master" AutoEventWireup="true" %>
+<asp:Content ContentPlaceHolderID="cp_content" runat="server">
+
+<div id="content" class="textpage">
+  
+      <div id="contentHeader">  
+          <h2><umbraco:Item runat="server" field="pageName"/></h2>
+      </div>
+      
+      <umbraco:Item runat="server" field="bodyText" />
+</div>
+
+<div id="subNavigation">
+      <umbraco:Macro Alias="umb2ndLevelNavigation" runat="server"></umbraco:Macro>
+</div>
+  
+
+</asp:Content>]]></Design>
+    </Template>
+  </Templates>
+  <Stylesheets>
+    <Stylesheet>
+      <Name>Starterkit</Name>
+      <FileName>
+      </FileName>
+      <Content><![CDATA[/*LAYOUT*/
+
+body{text-align: left; padding: 0px; margin: 0px; background: #F6F7F9;}
+
+#main{margin: auto; margin-top: 20px; text-align: left; width: 870px;}
+
+#top{border-bottom: 1px solid #CED7DE;}
+
+#top ul{list-style: none; padding: 0px 0px 15px 0px; margin: 0px;}
+#top ul li{display: inline; margin: 0px; padding: 0xp;}
+#top ul li a{padding: 10px 20px 10px 0px; color: #000}
+
+#top ul li.current a{font-weight: bold}
+
+#body{margin: auto; padding: 2em 0em 2em 0em;}
+#footer{padding-top: 5px; clear: both;}
+
+/* Subpages layout */
+#content.textpage{text-align: left; float: left; width: 75%;}
+#subNavigation{margin-top: 40px; width: 22%; float: right;} 
+#subNavigation ul{list-style: none; border: 1px solid #FFE8CD; background: #FFF9D8; display: block; padding: 10px; padding-left: 0px;}
+#subNavigation ul li{margin: 0; padding: 0px; padding-right: 10px;}
+
+/* FONTS standards */
+body {font-size: 14px; background:#fff; font-family: "Lucida Grande", Arial, sans-serif;}
+
+h1, h2, h3, h4, h5, h6 {color: #426FC8; font-weight: 500;}
+h1 {font-size:60px; line-height: 1; margin-bottom:0.5em; font-weight: bold; letter-spacing: -1px; width: auto; color: #666;}
+h2 {font-size:25px; margin-bottom:0.75em;}
+
+h3 {font-size: 18px;line-height:1;margin-bottom:1em;}
+h4 {font-size:1.2em;line-height:1.25;margin-bottom:1.25em;}
+h5 {font-size:1em;font-weight:bold;margin-bottom:1.5em;}
+h6 {font-size:1em;font-weight:bold;}
+h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {margin:0;}
+
+p {margin:0 0 1.5em; font-size: 16px;}
+p img {float:left;margin:1.5em 1.5em 1.5em 0;padding:0;}
+p img.right {float:right;margin:1.5em 0 1.5em 1.5em;}
+
+/* LINKS standards */
+a:hover {color:#000;}
+a {color: #426FC8; text-decoration:underline;}
+h1 a{color: #666; text-decoration: none;}
+
+/* ELEMENTS standards */
+blockquote {margin:1.5em;color:#666;font-style:italic;}
+strong {font-weight:bold;}
+em, dfn {font-style:italic;}
+dfn {font-weight:bold;}
+sup, sub {line-height:0;}
+abbr, acronym {border-bottom:1px dotted #666;}
+address {margin:0 0 1.5em;font-style:italic;}
+del {color:#666;}
+pre, code {margin:1.5em 0;white-space:pre;}
+pre, code, tt {font:1em 'andale mono', 'lucida console', monospace;line-height:1.5;}
+li ul, li ol {margin:0 1.5em;}
+ul, ol {margin:0 1.5em 1.5em 1.5em;}
+ul {list-style-type:disc;}
+ol {list-style-type:decimal;}
+dl {margin:0 0 1.5em 0;}
+dl dt {font-weight:bold;}
+dd {margin-left:1.5em;}
+table {margin-bottom:1.4em;width:100%;}
+th {font-weight:bold;background:#C3D9FF;}
+th, td {padding:4px 10px 4px 5px;}
+tr.even td {background:#E5ECF9;}
+tfoot {font-style:italic;}
+caption {background:#eee;}
+
+/* FORM ELEMENTS */
+label {font-weight:bold;}
+fieldset {padding:1.4em;margin:0 0 1.5em 0;border:1px solid #ccc;}
+legend {font-weight:bold;font-size:1.2em;}
+input.text, input.title, textarea, select {margin:0.5em 0;border:1px solid #bbb;}
+input.text:focus, input.title:focus, textarea:focus, select:focus {border:1px solid #666;}
+input.text, input.title {width:300px;padding:5px;}
+input.title {font-size:1.5em;}
+textarea {width:300px;height:250px;padding:5px;}
+.error, .notice, .success {padding:.8em;margin-bottom:1em;border:2px solid #ddd;}
+.error {background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4;}
+.notice {background:#FFF6BF;color:#514721;border-color:#FFD324;}
+.success {background:#E6EFC2;color:#264409;border-color:#C6D880;}
+.error a {color:#8a1f11;}
+.notice a {color:#514721;}
+.success a {color:#264409;}
+
+.error ul{margin-bottom: 0; padding-bottom: 0;}
+
+
+/*BLOG STYLES */
+#content .post{text-align: left;}
+
+/* Clear fix to repleace br clear:both */ 
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+ 
+.clearfix {
+  display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+  display: block;
+}
+ 
+* html .clearfix {
+  height: 1%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></Content>
+    </Stylesheet>
+  </Stylesheets>
+  <Macros>
+    <macro>
+      <name>2nd Level Navigation</name>
+      <alias>umb2ndLevelNavigation</alias>
+      <scriptType>
+      </scriptType>
+      <scriptAssembly>
+      </scriptAssembly>
+      <xslt>umb2ndLevelNavigation.xslt</xslt>
+      <useInEditor>False</useInEditor>
+      <refreshRate>0</refreshRate>
+      <scriptingFile>
+      </scriptingFile>
+      <properties />
+    </macro>
+    <macro>
+      <name>Top Navigation</name>
+      <alias>umbTopNavigation</alias>
+      <scriptType>
+      </scriptType>
+      <scriptAssembly>
+      </scriptAssembly>
+      <xslt>umbTopNavigation.xslt</xslt>
+      <useInEditor>False</useInEditor>
+      <refreshRate>0</refreshRate>
+      <scriptingFile>
+      </scriptingFile>
+      <properties />
+    </macro>
+  </Macros>
+  <DictionaryItems />
+  <Languages />
+  <DataTypes />
+  <Actions>
+    <Action runat="install" alias="publishRootDocument" documentName="Simple website" />
+  </Actions>
+</umbPackage>
