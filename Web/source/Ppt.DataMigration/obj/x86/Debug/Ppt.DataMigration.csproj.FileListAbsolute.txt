@@ -25,3 +25,4 @@ C:\Projects\PPT\Web\source\Ppt.DataMigration\bin\Debug\NLog.pdb
 C:\Projects\PPT\Web\source\Ppt.DataMigration\bin\Debug\NLog.xml
 C:\Projects\PPT\Web\source\Ppt.DataMigration\bin\Debug\Ppt.DataMigration.exe.config
 C:\Projects\PPT\Web\source\Ppt.DataMigration\bin\Debug\nlog.config
+C:\Projects\PPT\Web\source\Ppt.DataMigration\obj\x86\Debug\Ppt.DataMigration.ProgressBar.resources

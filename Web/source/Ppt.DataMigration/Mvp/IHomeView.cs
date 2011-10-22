@@ -16,10 +16,18 @@ namespace Ppt.DataMigration.Mvp
         string FriendsDatabase { get; }
         string PrisonerDatabase { get; }
 
+        IEnumerable<string> Errors { get; set; }
+
+        IProgressView Progress { get;  }
+
         void Action(HomeActions action);
         
     }
-    public enum HomeActions{
+    public enum HomeActions
+    {
+        DisplayErrors,
+        DisplayProgressBar,
+        HideProgressBar
 
     }
 }
