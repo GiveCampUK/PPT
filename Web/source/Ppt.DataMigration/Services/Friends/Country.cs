@@ -6,34 +6,40 @@ using System.Data.OleDb;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace Ppt.DataMigration.Services.Common
+namespace Ppt.DataMigration.Services.Friends
 {
     public class Country : AbstractTableMigrationService
     {
-        string _accessTableName = "COUNTRY";
+        public string AccessTableName { get; set; }
 
+        public Country()
+        {
+            AccessTableName= "COUNTRY";
+        }
         public override void MigrateTable()
         {
 
 
             try
             {
+                SQLConnection.Open();
+                AccessConnection.Open();
                 //Get Access Data
 
                 OleDbCommand oleCmd = AccessConnection.CreateCommand();
-                oleCmd.CommandText = "SELECT * FROM COUNTRY";
+                oleCmd.CommandText = "SELECT * FROM " + AccessTableName;
+
 
                 //get current records in SQL
                 SqlDataAdapter sqlAdapter = new SqlDataAdapter("SELECT * FROM COUNTRY", SQLConnection);
-                SQLConnection.Open();
-
+               
                 DataSet sqlCountry = new DataSet("Country");
                 sqlAdapter.FillSchema(sqlCountry, SchemaType.Source, "COUNTRY");
                 sqlAdapter.Fill(sqlCountry);
                 DataTable dt = sqlCountry.Tables["COUNTRY"];
 
-                StringBuilder insertQuery = new StringBuilder();
 
+                
                 var reader = oleCmd.ExecuteReader();
                 while (reader.Read())
                 {

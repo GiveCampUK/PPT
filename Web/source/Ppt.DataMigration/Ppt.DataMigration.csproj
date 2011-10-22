@@ -33,6 +33,26 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Castle.Core">
       <HintPath>..\..\depends\Castle\Castle.Core.dll</HintPath>
@@ -90,6 +110,7 @@
       <DependentUpon>ProgressBar.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
     <Compile Include="Services\Prisoner\Contact.cs" />
     <Compile Include="Services\Prisoner\Lookup_Type.cs" />
     <Compile Include="Services\Prisoner\Lookup_Response.cs" />
@@ -101,6 +122,9 @@
     <Compile Include="Services\Prisoner\Corresp.cs" />
     <Compile Include="Services\Prisoner\Lookup_PostTown.cs" />
     <Compile Include="Services\Common\Country.cs" />
+=======
+    <Compile Include="Services\Friends\Country.cs" />
+>>>>>>> bc7e67e2076d4330c089af1b0a4c3e34a92ec6e6
     <Compile Include="Services\DatabaseBuilderService.cs" />
     <Compile Include="Services\IDatabaseBuilderService.cs" />
     <Compile Include="Services\IDatabaseMigrationService.cs" />
@@ -137,7 +161,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Folder Include="Services\Friends\" />
+=======
+    <Folder Include="Services\Common\" />
+    <Folder Include="Services\Prisoner\" />
+>>>>>>> bc7e67e2076d4330c089af1b0a4c3e34a92ec6e6
     <Folder Include="Services\Yoga\" />
   </ItemGroup>
   <ItemGroup>
