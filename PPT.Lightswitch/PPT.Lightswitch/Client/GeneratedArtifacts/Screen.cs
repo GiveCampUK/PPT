@@ -200,7 +200,9 @@ namespace LightSwitchApplication
 
             private global::Microsoft.LightSwitch.IDataServiceQueryable ContactsSetQuery()
             {
-                return this.Screen.DataWorkspace.ApplicationData.ContactsSet;
+                return global::Microsoft.LightSwitch.DataServiceQueryable.Include(
+                    this.Screen.DataWorkspace.ApplicationData.ContactsSet,
+                    "Country");
             }
 
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
