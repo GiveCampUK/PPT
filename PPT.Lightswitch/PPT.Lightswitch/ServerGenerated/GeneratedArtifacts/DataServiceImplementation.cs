@@ -196,9 +196,9 @@ namespace LightSwitchApplication.Implementation
             return this.GetQuery<global::ApplicationData.Implementation.Prisoner>("Prisoners_Single", frameworkOperators, Id);
         }
     
-        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Prisoner> Prisoners_SingleOrDefault(string frameworkOperators, global::System.Nullable<int> Id)
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Prisoner> Prisoners_SingleOrDefault(string frameworkOperators, global::System.Nullable<int> ContactId)
         {
-            return this.GetQuery<global::ApplicationData.Implementation.Prisoner>("Prisoners_SingleOrDefault", frameworkOperators, Id);
+            return this.GetQuery<global::ApplicationData.Implementation.Prisoner>("Prisoners_SingleOrDefault", frameworkOperators, ContactId);
         }
     
         public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Prisoner> Prisoners_All(string frameworkOperators)
@@ -323,12 +323,12 @@ namespace LightSwitchApplication.Implementation
             return query;
         }
     
-        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Prisoner> Prisoners_SingleOrDefault(global::System.Nullable<int> Id)
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Prisoner> Prisoners_SingleOrDefault(global::System.Nullable<int> ContactId)
         {
             global::System.Linq.IQueryable<global::ApplicationData.Implementation.Prisoner> query;
             query = global::System.Linq.Queryable.Where(
                 this.GetQuery<global::ApplicationData.Implementation.Prisoner>("Prisoners_All"),
-                (p) => (Id.HasValue && (p.Id == Id)));
+                (p) => (ContactId.HasValue && (p.Id == ContactId)));
             return query;
         }
     

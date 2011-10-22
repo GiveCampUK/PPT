@@ -274,12 +274,12 @@ namespace LightSwitchApplication
         /// <summary>
         /// Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists.
         /// </summary>
-        /// <param name="Id">
+        /// <param name="ContactId">
         /// The value of the 'Id' key property of the entity to retrieve.
         /// </param>
-        public global::LightSwitchApplication.Prisoner Prisoners_SingleOrDefault(global::System.Nullable<int> Id)
+        public global::LightSwitchApplication.Prisoner Prisoners_SingleOrDefault(global::System.Nullable<int> ContactId)
         {
-            return this.Details.Methods.Prisoners_SingleOrDefault.CreateInvocation(Id).Execute();
+            return this.Details.Methods.Prisoners_SingleOrDefault.CreateInvocation(ContactId).Execute();
         }
         
         #endregion

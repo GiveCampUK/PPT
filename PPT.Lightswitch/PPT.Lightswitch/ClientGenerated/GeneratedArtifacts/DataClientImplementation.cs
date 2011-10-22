@@ -1025,7 +1025,7 @@ namespace LightSwitchApplication.Implementation
             [global::System.ServiceModel.OperationContract(AsyncPattern = true, Action = "http://tempuri.org/ApplicationDataDomainService/Prisoners_SingleOrDefault", ReplyAction = "http://tempuri.org/ApplicationDataDomainService/Prisoners_SingleOrDefaultResponse"),
              global::System.ServiceModel.Web.WebGet(),
              global::System.ServiceModel.FaultContract(typeof(global::System.ServiceModel.DomainServices.Client.DomainServiceFault), Action = "http://tempuri.org/ApplicationDataDomainService/Prisoners_SingleOrDefaultDomainServiceFault", Name = "DomainServiceFault", Namespace = "DomainServices")]
-            global::System.IAsyncResult BeginPrisoners_SingleOrDefault(string frameworkOperators, global::System.Nullable<int> Id, global::System.AsyncCallback callback, global::System.Object asyncState);
+            global::System.IAsyncResult BeginPrisoners_SingleOrDefault(string frameworkOperators, global::System.Nullable<int> ContactId, global::System.AsyncCallback callback, global::System.Object asyncState);
             global::System.ServiceModel.DomainServices.Client.QueryResult<global::LightSwitchApplication.Implementation.Prisoner> EndPrisoners_SingleOrDefault(global::System.IAsyncResult result);
             
             [global::System.ServiceModel.OperationContract(AsyncPattern = true, Action = "http://tempuri.org/ApplicationDataDomainService/Prisoners_All", ReplyAction = "http://tempuri.org/ApplicationDataDomainService/Prisoners_AllResponse"),
