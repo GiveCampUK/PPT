@@ -1,4 +1,4 @@
-﻿namespace ppt.domain.Entities
+﻿namespace ppt.core.Entities
 {
     public class Instiution : AggregateRoot
     {
