@@ -1,0 +1,2102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ModelFragment xmlns="http://schemas.microsoft.com/LightSwitch/2010/xaml/model"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Application Name="LightSwitchApplication"
+               Version="1.0.0.0"
+               DefaultNavigationItem="!module/NavigationItems[Tasks]"
+               Shell=":Standard"
+               Theme=":Blue">
+    <Application.Methods>
+      <ApplicationMethod Name="ShowPrisonList">
+        <ApplicationMethod.Attributes>
+          <ShowScreenMethod TargetScreen="PrisonList" />
+        </ApplicationMethod.Attributes>
+      </ApplicationMethod>
+      <ApplicationMethod Name="ShowPeopleList">
+        <ApplicationMethod.Attributes>
+          <ShowScreenMethod TargetScreen="PeopleList" />
+        </ApplicationMethod.Attributes>
+      </ApplicationMethod>
+      <ApplicationMethod Name="ShowSearchFindRocks">
+        <ApplicationMethod.Attributes>
+          <ShowScreenMethod TargetScreen="SearchFindRocks" />
+        </ApplicationMethod.Attributes>
+      </ApplicationMethod>
+      <ApplicationMethod Name="ShowTable1ItemsListDetail">
+        <ApplicationMethod.Attributes>
+          <ShowScreenMethod TargetScreen="Table1ItemsListDetail" />
+        </ApplicationMethod.Attributes>
+      </ApplicationMethod>
+      <ApplicationMethod Name="ShowfinddogsListDetail">
+        <ApplicationMethod.Attributes>
+          <ShowScreenMethod TargetScreen="finddogsListDetail" />
+        </ApplicationMethod.Attributes>
+      </ApplicationMethod>
+      <ApplicationMethod Name="ShowprisonsInHellListDetail">
+        <ApplicationMethod.Attributes>
+          <ShowScreenMethod TargetScreen="prisonsInHellListDetail" />
+        </ApplicationMethod.Attributes>
+      </ApplicationMethod>
+    </Application.Methods>
+    <Application.Attributes>
+      <AutomaticDisplayName Expression="(\p{Ll})(\p{Lu})|_+"
+                            Replacement="$1 $2" />
+    </Application.Attributes>
+    <Application.NavigationItems>
+      <ApplicationNavigationGroup Name="group"
+                                  DefaultItem="!module/NavigationItems[group]/Children[Table1ItemsListDetail]">
+        <ApplicationNavigationGroup.Attributes>
+          <DisplayName Value="Records" />
+        </ApplicationNavigationGroup.Attributes>
+        <ApplicationNavigationLink Command="!module/Commands[ScreenCommandShowPrisonList]"
+                                   Name="PrisonList" />
+        <ApplicationNavigationLink Command="!module/Commands[ScreenCommandShowPeopleList]"
+                                   Name="PeopleList" />
+        <ApplicationNavigationLink Command="!module/Commands[ScreenCommandShowTable1ItemsListDetail]"
+                                   Name="Table1ItemsListDetail" />
+        <ApplicationNavigationLink Command="!module/Commands[ScreenCommandShowfinddogsListDetail]"
+                                   Name="finddogsListDetail" />
+        <ApplicationNavigationLink Command="!module/Commands[ScreenCommandShowprisonsInHellListDetail]"
+                                   Name="prisonsInHellListDetail" />
+      </ApplicationNavigationGroup>
+      <ApplicationNavigationGroup Name="Tasks">
+        <ApplicationNavigationGroup.Attributes>
+          <DisplayName Value="Tasks" />
+        </ApplicationNavigationGroup.Attributes>
+        <ApplicationNavigationLink Command="!module/Commands[ScreenCommandShowSearchFindRocks]"
+                                   Name="SearchFindRocks" />
+      </ApplicationNavigationGroup>
+      <ApplicationNavigationGroup Name="Administration">
+        <ApplicationNavigationGroup.Attributes>
+          <DisplayName Value="Administration" />
+        </ApplicationNavigationGroup.Attributes>
+        <ApplicationNavigationLink Command="Microsoft.LightSwitch.Security:!module/Commands[ScreenCommandShowRolesScreen]"
+                                   Name="RolesScreen" />
+        <ApplicationNavigationLink Command="Microsoft.LightSwitch.Security:!module/Commands[ScreenCommandShowUsersScreen]"
+                                   Name="UsersScreen" />
+      </ApplicationNavigationGroup>
+    </Application.NavigationItems>
+    <ApplicationCommand Name="ScreenCommandShowPrisonList"
+                        Target="!module/Methods[ShowPrisonList]" />
+    <ApplicationCommand Name="ScreenCommandShowPeopleList"
+                        Target="!module/Methods[ShowPeopleList]" />
+    <ApplicationCommand Name="ScreenCommandShowSearchFindRocks"
+                        Target="!module/Methods[ShowSearchFindRocks]" />
+    <ApplicationCommand Name="ScreenCommandShowTable1ItemsListDetail"
+                        Target="!module/Methods[ShowTable1ItemsListDetail]" />
+    <ApplicationCommand Name="ScreenCommandShowfinddogsListDetail"
+                        Target="!module/Methods[ShowfinddogsListDetail]" />
+    <ApplicationCommand Name="ScreenCommandShowprisonsInHellListDetail"
+                        Target="!module/Methods[ShowprisonsInHellListDetail]" />
+  </Application>
+
+  <EntityContainerGroup Name="DataWorkspace">
+    <EntityContainerGroupProperty EntityContainer="Microsoft.LightSwitch.Security:SecurityData"
+                             Name="SecurityData">
+      <EntityContainerGroupProperty.Attributes>
+        <Generated />
+        <DisplayName Value="Security Data" />
+        <Description Value="Service that provides access to security-related data." />
+      </EntityContainerGroupProperty.Attributes>
+    </EntityContainerGroupProperty>
+    <EntityContainerGroupProperty EntityContainer="ApplicationData"
+                                  Name="ApplicationData" />
+  </EntityContainerGroup><EntityContainer Name="ApplicationData"
+                   IsIntrinsic="True">
+
+    <SubmitOperation Name="SaveChanges" />
+  
+    <EntitySet CanDelete="True"
+               CanInsert="True"
+               CanUpdate="True"
+               EntityType="People"
+               Name="PeopleSet" />
+  
+    <QueryOperation Name="PeopleSet_Single"
+                    ReturnType="People">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="PeopleSet" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter Name="Id"
+                               ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  
+    <QueryOperation Name="PeopleSet_SingleOrDefault"
+                    ReturnType="People">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="PeopleSet" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter Name="Id"
+                               ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  
+    <QueryOperation Name="PeopleSet_All"
+                    ReturnType="People*">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description Value="Returns all entities contained in the entity set." />
+      </QueryOperation.Attributes>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="PeopleSet" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+    </QueryOperation>
+  
+    <EntitySet CanDelete="True"
+               CanInsert="True"
+               CanUpdate="True"
+               EntityType="Prison"
+               Name="Prisons" />
+  
+    <QueryOperation Name="Prisons_Single"
+                    ReturnType="Prison">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="Prisons" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter Name="Id"
+                               ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  
+    <QueryOperation Name="Prisons_SingleOrDefault"
+                    ReturnType="Prison">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="Prisons" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter Name="Id"
+                               ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  
+    <QueryOperation Name="Prisons_All"
+                    ReturnType="Prison*">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description Value="Returns all entities contained in the entity set." />
+      </QueryOperation.Attributes>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="Prisons" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+    </QueryOperation>
+  
+    <QueryOperation Name="FindRocks"
+                    ReturnType="Prison*">
+      <QueryOperation.SortCriteria>
+        <SortCriterion>
+          <ChainExpression>
+            <MemberExpression Member="Id" />
+          </ChainExpression>
+        </SortCriterion>
+      </QueryOperation.SortCriteria>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression NodeType="Contains">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression Member="Address" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ConstantExpression ResultType=":String"
+                                  Value="rock" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="Prisons" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+    </QueryOperation>
+  
+    <EntitySet CanDelete="True"
+               CanInsert="True"
+               CanUpdate="True"
+               EntityType="Table1Item"
+               Name="Table1Items" />
+  
+    <QueryOperation Name="Table1Items_Single"
+                    ReturnType="Table1Item">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description Value="Returns the entity whose identity is specified by the parameter(s)." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="Table1Items" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter Name="Id"
+                               ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  
+    <QueryOperation Name="Table1Items_SingleOrDefault"
+                    ReturnType="Table1Item">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description Value="Returns the entity whose identity is specified by the parameter(s) or null if no such entity exists." />
+      </QueryOperation.Attributes>
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression Member="Id" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression Parameter="Id" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="Table1Items" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter Name="Id"
+                               ParameterType=":Int32?">
+        <QueryOperationParameter.Attributes>
+          <Description Value="The value of the 'Id' key property of the entity to retrieve." />
+        </QueryOperationParameter.Attributes>
+      </QueryOperationParameter>
+    </QueryOperation>
+  
+    <QueryOperation Name="Table1Items_All"
+                    ReturnType="Table1Item*">
+      <QueryOperation.Attributes>
+        <Generated />
+        <Description Value="Returns all entities contained in the entity set." />
+      </QueryOperation.Attributes>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="Table1Items" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+    </QueryOperation>
+  
+    <QueryOperation Name="finddogs"
+                    ReturnType="Prison*">
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression NodeType="Contains">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression Member="Address" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ConstantExpression ResultType=":String"
+                                  Value="dog" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="Prisons" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+    </QueryOperation>
+  
+    <QueryOperation Name="prisonsInHell"
+                    ReturnType="Prison*">
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression Member="Address" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ConstantExpression ResultType=":String"
+                                  Value="hell" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="Prisons" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+    </QueryOperation>
+  </EntityContainer>
+
+  
+  <DataService DataProvider="EntityFrameworkDataProvider"
+               EntityContainer="ApplicationData"
+               Name="ApplicationDataMapping" />
+
+  <EntityType Name="People">
+    <EntityType.Methods>
+      <EntityMethod Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty Name="Id"
+                   PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty Name="FirstName"
+                      PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty Name="LastName"
+                      PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty Name="DateOfBirth"
+                      PropertyType=":Date">
+        <EntityProperty.Attributes>
+          <NotSearchable />
+          <Required />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+
+  <EntityType Name="Prison">
+    <EntityType.Attributes>
+      <NotSearchable />
+    </EntityType.Attributes>
+    <EntityType.Methods>
+      <EntityMethod Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty Name="Id"
+                   PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty Name="Name"
+                      PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty Name="Address"
+                      PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+
+  <Screen Name="PrisonList">
+    <Screen.Attributes>
+      <SaveChangesTo DataService="ApplicationDataMapping" />
+    </Screen.Attributes>
+    <Screen.Methods>
+      <ScreenMethod Name="Save">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+          <ImageResource ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Save.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod Name="Refresh">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+          <ImageResource ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Refresh.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod Name="Close">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod Name="FindRocks" />
+      <ScreenMethod Name="FilterToRocks" />
+    </Screen.Methods>
+    <Screen.Properties>
+      <ScreenCollectionProperty Name="Prisons"
+                                PageSize="45"
+                                PropertyType="CollectionView$Prison"
+                                DisableSearch="True">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition Name="PrisonsQuery"
+                                 ReturnType="Prison*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <MemberExpression Member="ApplicationData/Members[Prisons_All]" />
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression Target="PrisonList/Properties[Prisons]/Query" />
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+    </Screen.Properties>
+    <Screen.RootContentItem>
+      <ContentItem Kind="Screen"
+                   Name="RootContentItem">
+        <ContentItem.CommandItems>
+          <ContentItem Kind="Command"
+                       Name="Save">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression Target="PrisonList/Methods[Save]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem Kind="Command"
+                       Name="Refresh">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression Target="PrisonList/Methods[Refresh]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+        </ContentItem.CommandItems>
+        <ContentItem Kind="Group"
+                     Name="ScreenLayout"
+                     View="Microsoft.LightSwitch:ColumnsLayout">
+          <ContentItem Kind="Group"
+                       Name="ListColumn">
+            <ContentItem.PropertySources>
+              <ControlPropertySource Property=":ColumnsLayout/Properties[WeightedColumnWidth]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":Double"
+                                        Value="2" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+            <ContentItem DataType="CollectionView$Prison"
+                         Kind="Collection"
+                         Name="PrisonList"
+                         View="Microsoft.LightSwitch:List">
+              <ContentItem.CommandItems>
+                <ContentItem Kind="Command"
+                             Name="Prisons_AddAndEditNew">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="PrisonList/Properties[Prisons]" />
+                        <CallExpression Target="AddAndEditNew" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem Kind="Command"
+                             Name="Prisons_EditSelected">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="PrisonList/Properties[Prisons]" />
+                        <CallExpression Target="EditSelected" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem Kind="Command"
+                             Name="Prisons_DeleteSelected">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="PrisonList/Properties[Prisons]" />
+                        <CallExpression Target="DeleteSelected" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem Kind="Command"
+                             Name="FilterToRocks">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <CallExpression Target="PrisonList/Methods[FilterToRocks]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem.CommandItems>
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression Member="PrisonList/Properties[Prisons]" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem.PropertySources>
+                <ControlPropertySource Property=":RootControl/Properties[AttachedLabelPosition]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression ResultType=":String"
+                                          Value="Collapsed" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+                <ControlPropertySource Property=":RootControl/Properties[VerticalAlignment]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression ResultType=":String"
+                                          Value="Stretch" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+              <ContentItem DataType="Prison"
+                           Kind="Details"
+                           Name="RowTemplate">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression />
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+                <ContentItem DataType=":String"
+                             Kind="Value"
+                             Name="Name">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="Prison/Properties[Name]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem DataType=":String"
+                             Kind="Value"
+                             Name="Address">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="Prison/Properties[Address]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+            </ContentItem>
+          </ContentItem>
+          <ContentItem Kind="Group"
+                       Name="DetailsColumn">
+            <ContentItem.PropertySources>
+              <ControlPropertySource Property=":ScrollableControl/Properties[IsVerticalScrollBarEnabled]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":Boolean"
+                                        Value="True" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource Property=":ColumnsLayout/Properties[WeightedColumnWidth]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":Double"
+                                        Value="3" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+            <ContentItem DataType="Prison"
+                         Kind="Details"
+                         Name="PrisonDetails">
+              <ContentItem.Attributes>
+                <DisplayName Value="Prison Details" />
+              </ContentItem.Attributes>
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression Member="PrisonList/Properties[Prisons]" />
+                    <MemberExpression Member="SelectedItem" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem.PropertySources>
+                <ControlPropertySource Property=":RootControl/Properties[VerticalAlignment]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression ResultType=":String"
+                                          Value="Top" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="Name1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="Prison/Properties[Name]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="Address1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="Prison/Properties[Address]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem>
+          </ContentItem>
+        </ContentItem>
+      </ContentItem>
+    </Screen.RootContentItem>
+  </Screen>
+
+  <Screen Name="PeopleList">
+    <Screen.Attributes>
+      <SaveChangesTo DataService="ApplicationDataMapping" />
+    </Screen.Attributes>
+    <Screen.Methods>
+      <ScreenMethod Name="Save">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+          <ImageResource ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Save.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod Name="Refresh">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+          <ImageResource ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Refresh.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod Name="Close">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod Name="Method" />
+      <ScreenMethod Name="DoMethod1" />
+    </Screen.Methods>
+    <Screen.Properties>
+      <ScreenCollectionProperty Name="PeopleSet"
+                                PageSize="45"
+                                PropertyType="CollectionView$People">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition Name="PeopleSetQuery"
+                                 ReturnType="People*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <MemberExpression Member="ApplicationData/Members[PeopleSet_All]" />
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression Target="PeopleList/Properties[PeopleSet]/Query" />
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+    </Screen.Properties>
+    <Screen.RootContentItem>
+      <ContentItem Kind="Screen"
+                   Name="RootContentItem">
+        <ContentItem.CommandItems>
+          <ContentItem Kind="Command"
+                       Name="Save">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression Target="PeopleList/Methods[Save]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem Kind="Command"
+                       Name="Refresh">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression Target="PeopleList/Methods[Refresh]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+        </ContentItem.CommandItems>
+        <ContentItem Kind="Group"
+                     Name="ScreenLayout"
+                     View="Microsoft.LightSwitch:ColumnsLayout">
+          <ContentItem Kind="Group"
+                       Name="ListColumn">
+            <ContentItem.PropertySources>
+              <ControlPropertySource Property=":ColumnsLayout/Properties[WeightedColumnWidth]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":Double"
+                                        Value="2" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+            <ContentItem DataType="CollectionView$People"
+                         Kind="Collection"
+                         Name="PeopleList"
+                         View="Microsoft.LightSwitch:List">
+              <ContentItem.CommandItems>
+                <ContentItem Kind="Command"
+                             Name="PeopleSet_AddAndEditNew">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="PeopleList/Properties[PeopleSet]" />
+                        <CallExpression Target="AddAndEditNew" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem Kind="Command"
+                             Name="PeopleSet_EditSelected">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="PeopleList/Properties[PeopleSet]" />
+                        <CallExpression Target="EditSelected" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem Kind="Command"
+                             Name="PeopleSet_DeleteSelected">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="PeopleList/Properties[PeopleSet]" />
+                        <CallExpression Target="DeleteSelected" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem.CommandItems>
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression Member="PeopleList/Properties[PeopleSet]" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem.PropertySources>
+                <ControlPropertySource Property=":RootControl/Properties[AttachedLabelPosition]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression ResultType=":String"
+                                          Value="Collapsed" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+                <ControlPropertySource Property=":RootControl/Properties[VerticalAlignment]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression ResultType=":String"
+                                          Value="Stretch" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+              <ContentItem DataType="People"
+                           Kind="Details"
+                           Name="RowTemplate">
+                <ContentItem.CommandItems>
+                  <ContentItem Kind="Command"
+                               Name="Method"
+                               View=":Link">
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <CallExpression Target="PeopleList/Methods[Method]" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                  </ContentItem>
+                  <ContentItem Kind="Command"
+                               Name="DoMethod1">
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression>
+                          <CallExpression Target="PeopleList/Methods[DoMethod1]" />
+                        </ChainExpression>
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                  </ContentItem>
+                </ContentItem.CommandItems>
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression />
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+                <ContentItem DataType=":String"
+                             Kind="Value"
+                             Name="FirstName">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="People/Properties[FirstName]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem DataType=":String"
+                             Kind="Value"
+                             Name="LastName">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="People/Properties[LastName]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+            </ContentItem>
+          </ContentItem>
+          <ContentItem Kind="Group"
+                       Name="DetailsColumn">
+            <ContentItem.PropertySources>
+              <ControlPropertySource Property=":ScrollableControl/Properties[IsVerticalScrollBarEnabled]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":Boolean"
+                                        Value="True" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource Property=":ColumnsLayout/Properties[WeightedColumnWidth]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":Double"
+                                        Value="3" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+            <ContentItem DataType="People"
+                         Kind="Details"
+                         Name="PeopleDetails">
+              <ContentItem.Attributes>
+                <DisplayName Value="People Details" />
+              </ContentItem.Attributes>
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression Member="PeopleList/Properties[PeopleSet]" />
+                    <MemberExpression Member="SelectedItem" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem.PropertySources>
+                <ControlPropertySource Property=":RootControl/Properties[VerticalAlignment]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression ResultType=":String"
+                                          Value="Top" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="FirstName1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="People/Properties[FirstName]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="LastName1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="People/Properties[LastName]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":Date"
+                           Kind="Value"
+                           Name="DateOfBirth">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="People/Properties[DateOfBirth]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":Int32"
+                           Kind="Value"
+                           Name="Id">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="People/Properties[Id]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem>
+          </ContentItem>
+        </ContentItem>
+      </ContentItem>
+    </Screen.RootContentItem>
+  </Screen>
+
+  <Screen Name="SearchFindRocks">
+    <Screen.Attributes>
+      <SaveChangesTo DataService="ApplicationDataMapping" />
+    </Screen.Attributes>
+    <Screen.Methods>
+      <ScreenMethod Name="Save">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+          <ImageResource ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Save.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod Name="Refresh">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+          <ImageResource ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Refresh.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod Name="Close">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+    </Screen.Methods>
+    <Screen.Properties>
+      <ScreenCollectionProperty DisableSearch="True"
+                                Name="FindRocks"
+                                PageSize="45"
+                                PropertyType="CollectionView$Prison">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition Name="FindRocksQuery"
+                                 ReturnType="Prison*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <MemberExpression Member="ApplicationData/Members[FindRocks]" />
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression Target="SearchFindRocks/Properties[FindRocks]/Query" />
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+    </Screen.Properties>
+    <Screen.RootContentItem>
+      <ContentItem Kind="Screen"
+                   Name="RootContentItem">
+        <ContentItem.CommandItems>
+          <ContentItem Kind="Command"
+                       Name="Save">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression Target="SearchFindRocks/Methods[Save]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem Kind="Command"
+                       Name="Refresh">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression Target="SearchFindRocks/Methods[Refresh]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+        </ContentItem.CommandItems>
+        <ContentItem Kind="Group"
+                     Name="ScreenLayout">
+          <ContentItem DataType="CollectionView$Prison"
+                       Kind="Collection"
+                       Name="grid">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <MemberExpression Member="SearchFindRocks/Properties[FindRocks]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+            <ContentItem.PropertySources>
+              <ControlPropertySource Property=":DataGrid/Properties[ShowVirtualRow]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":Boolean"
+                                        Value="False" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource Property=":RootControl/Properties[AttachedLabelPosition]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":String"
+                                        Value="Collapsed" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource Property=":RootControl/Properties[VerticalAlignment]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":String"
+                                        Value="Stretch" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+            <ContentItem DataType="Prison"
+                         Kind="Details"
+                         Name="RowTemplate">
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression />
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem.PropertySources>
+                <ControlPropertySource Property=":RootControl/Properties[BrowseOnly]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression ResultType=":Boolean"
+                                          Value="True" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="Name">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="Prison/Properties[Name]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+                <ContentItem.PropertySources>
+                  <ControlPropertySource Property=":RootControl/Properties[ShowAsLink]">
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <ConstantExpression ResultType=":Boolean"
+                                            Value="True" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ControlPropertySource>
+                </ContentItem.PropertySources>
+              </ContentItem>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="Address">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="Prison/Properties[Address]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem>
+          </ContentItem>
+        </ContentItem>
+      </ContentItem>
+    </Screen.RootContentItem>
+  </Screen>
+
+  <EntityType Name="Table1Item">
+    <EntityType.Methods>
+      <EntityMethod Name="Delete">
+        <EntityMethod.Attributes>
+          <Generated />
+        </EntityMethod.Attributes>
+      </EntityMethod>
+    </EntityType.Methods>
+    <EntityType.Properties>
+      <KeyProperty Name="Id"
+                   PropertyType=":Int32">
+        <KeyProperty.Attributes>
+          <Required />
+          <NotSearchable />
+        </KeyProperty.Attributes>
+      </KeyProperty>
+      <EntityProperty Name="wowo"
+                      PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+      <EntityProperty Name="morestuff"
+                      PropertyType=":String">
+        <EntityProperty.Attributes>
+          <Required />
+          <MaxLength Value="255" />
+        </EntityProperty.Attributes>
+      </EntityProperty>
+    </EntityType.Properties>
+  </EntityType>
+
+  <Screen Name="Table1ItemsListDetail">
+    <Screen.Attributes>
+      <SaveChangesTo DataService="ApplicationDataMapping" />
+    </Screen.Attributes>
+    <Screen.Methods>
+      <ScreenMethod Name="Save">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+          <ImageResource ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Save.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod Name="Refresh">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+          <ImageResource ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Refresh.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod Name="Close">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+    </Screen.Methods>
+    <Screen.Properties>
+      <ScreenCollectionProperty Name="Table1Items"
+                                PageSize="45"
+                                PropertyType="CollectionView$Table1Item">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition Name="Table1ItemsQuery"
+                                 ReturnType="Table1Item*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <MemberExpression Member="ApplicationData/Members[Table1Items_All]" />
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression Target="Table1ItemsListDetail/Properties[Table1Items]/Query" />
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+    </Screen.Properties>
+    <Screen.RootContentItem>
+      <ContentItem Kind="Screen"
+                   Name="RootContentItem">
+        <ContentItem.CommandItems>
+          <ContentItem Kind="Command"
+                       Name="Save">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression Target="Table1ItemsListDetail/Methods[Save]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem Kind="Command"
+                       Name="Refresh">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression Target="Table1ItemsListDetail/Methods[Refresh]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+        </ContentItem.CommandItems>
+        <ContentItem Kind="Group"
+                     Name="ScreenLayout"
+                     View="Microsoft.LightSwitch:ColumnsLayout">
+          <ContentItem Kind="Group"
+                       Name="ListColumn">
+            <ContentItem.PropertySources>
+              <ControlPropertySource Property=":ColumnsLayout/Properties[WeightedColumnWidth]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":Double"
+                                        Value="2" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+            <ContentItem DataType="CollectionView$Table1Item"
+                         Kind="Collection"
+                         Name="Table1ItemList"
+                         View="Microsoft.LightSwitch:List">
+              <ContentItem.CommandItems>
+                <ContentItem Kind="Command"
+                             Name="Table1Items_AddAndEditNew">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="Table1ItemsListDetail/Properties[Table1Items]" />
+                        <CallExpression Target="AddAndEditNew" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem Kind="Command"
+                             Name="Table1Items_EditSelected">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="Table1ItemsListDetail/Properties[Table1Items]" />
+                        <CallExpression Target="EditSelected" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem Kind="Command"
+                             Name="Table1Items_DeleteSelected">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="Table1ItemsListDetail/Properties[Table1Items]" />
+                        <CallExpression Target="DeleteSelected" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem.CommandItems>
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression Member="Table1ItemsListDetail/Properties[Table1Items]" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem.PropertySources>
+                <ControlPropertySource Property=":RootControl/Properties[AttachedLabelPosition]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression ResultType=":String"
+                                          Value="Collapsed" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+                <ControlPropertySource Property=":RootControl/Properties[VerticalAlignment]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression ResultType=":String"
+                                          Value="Stretch" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+              <ContentItem DataType="Table1Item"
+                           Kind="Details"
+                           Name="RowTemplate">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression />
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+                <ContentItem DataType=":String"
+                             Kind="Value"
+                             Name="wowo">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="Table1Item/Properties[wowo]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem DataType=":String"
+                             Kind="Value"
+                             Name="morestuff">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="Table1Item/Properties[morestuff]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+            </ContentItem>
+          </ContentItem>
+          <ContentItem Kind="Group"
+                       Name="DetailsColumn">
+            <ContentItem.PropertySources>
+              <ControlPropertySource Property=":ScrollableControl/Properties[IsVerticalScrollBarEnabled]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":Boolean"
+                                        Value="True" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource Property=":ColumnsLayout/Properties[WeightedColumnWidth]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":Double"
+                                        Value="3" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+            <ContentItem DataType="Table1Item"
+                         Kind="Details"
+                         Name="Table1ItemDetails">
+              <ContentItem.Attributes>
+                <DisplayName Value="Table1Item Details" />
+              </ContentItem.Attributes>
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression Member="Table1ItemsListDetail/Properties[Table1Items]" />
+                    <MemberExpression Member="SelectedItem" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem.PropertySources>
+                <ControlPropertySource Property=":RootControl/Properties[VerticalAlignment]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression ResultType=":String"
+                                          Value="Top" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="wowo1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="Table1Item/Properties[wowo]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="morestuff1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="Table1Item/Properties[morestuff]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem>
+          </ContentItem>
+        </ContentItem>
+      </ContentItem>
+    </Screen.RootContentItem>
+  </Screen>
+
+  <Screen Name="finddogsListDetail">
+    <Screen.Attributes>
+      <SaveChangesTo DataService="ApplicationDataMapping" />
+    </Screen.Attributes>
+    <Screen.Methods>
+      <ScreenMethod Name="Save">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+          <ImageResource ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Save.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod Name="Refresh">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+          <ImageResource ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Refresh.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod Name="Close">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+    </Screen.Methods>
+    <Screen.Properties>
+      <ScreenCollectionProperty DisableSearch="True"
+                                Name="finddogs"
+                                PageSize="45"
+                                PropertyType="CollectionView$Prison">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition Name="finddogsQuery"
+                                 ReturnType="Prison*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <MemberExpression Member="ApplicationData/Members[finddogs]" />
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression Target="finddogsListDetail/Properties[finddogs]/Query" />
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+    </Screen.Properties>
+    <Screen.RootContentItem>
+      <ContentItem Kind="Screen"
+                   Name="RootContentItem">
+        <ContentItem.CommandItems>
+          <ContentItem Kind="Command"
+                       Name="Save">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression Target="finddogsListDetail/Methods[Save]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem Kind="Command"
+                       Name="Refresh">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression Target="finddogsListDetail/Methods[Refresh]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+        </ContentItem.CommandItems>
+        <ContentItem Kind="Group"
+                     Name="ScreenLayout"
+                     View="Microsoft.LightSwitch:ColumnsLayout">
+          <ContentItem Kind="Group"
+                       Name="ListColumn">
+            <ContentItem.PropertySources>
+              <ControlPropertySource Property=":ColumnsLayout/Properties[WeightedColumnWidth]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":Double"
+                                        Value="2" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+            <ContentItem DataType="CollectionView$Prison"
+                         Kind="Collection"
+                         Name="PrisonList"
+                         View="Microsoft.LightSwitch:List">
+              <ContentItem.CommandItems>
+                <ContentItem Kind="Command"
+                             Name="finddogs_AddAndEditNew">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="finddogsListDetail/Properties[finddogs]" />
+                        <CallExpression Target="AddAndEditNew" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem Kind="Command"
+                             Name="finddogs_EditSelected">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="finddogsListDetail/Properties[finddogs]" />
+                        <CallExpression Target="EditSelected" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem Kind="Command"
+                             Name="finddogs_DeleteSelected">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="finddogsListDetail/Properties[finddogs]" />
+                        <CallExpression Target="DeleteSelected" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem.CommandItems>
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression Member="finddogsListDetail/Properties[finddogs]" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem.PropertySources>
+                <ControlPropertySource Property=":RootControl/Properties[AttachedLabelPosition]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression ResultType=":String"
+                                          Value="Collapsed" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+                <ControlPropertySource Property=":RootControl/Properties[VerticalAlignment]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression ResultType=":String"
+                                          Value="Stretch" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+              <ContentItem DataType="Prison"
+                           Kind="Details"
+                           Name="RowTemplate">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression />
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+                <ContentItem DataType=":String"
+                             Kind="Value"
+                             Name="Name">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="Prison/Properties[Name]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem DataType=":String"
+                             Kind="Value"
+                             Name="Address">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="Prison/Properties[Address]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+            </ContentItem>
+          </ContentItem>
+          <ContentItem Kind="Group"
+                       Name="DetailsColumn">
+            <ContentItem.PropertySources>
+              <ControlPropertySource Property=":ScrollableControl/Properties[IsVerticalScrollBarEnabled]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":Boolean"
+                                        Value="True" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource Property=":ColumnsLayout/Properties[WeightedColumnWidth]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":Double"
+                                        Value="3" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+            <ContentItem DataType="Prison"
+                         Kind="Details"
+                         Name="PrisonDetails">
+              <ContentItem.Attributes>
+                <DisplayName Value="Prison Details" />
+              </ContentItem.Attributes>
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression Member="finddogsListDetail/Properties[finddogs]" />
+                    <MemberExpression Member="SelectedItem" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem.PropertySources>
+                <ControlPropertySource Property=":RootControl/Properties[VerticalAlignment]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression ResultType=":String"
+                                          Value="Top" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="Name1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="Prison/Properties[Name]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="Address1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="Prison/Properties[Address]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem>
+          </ContentItem>
+        </ContentItem>
+      </ContentItem>
+    </Screen.RootContentItem>
+  </Screen>
+
+  <Screen Name="prisonsInHellListDetail">
+    <Screen.Attributes>
+      <SaveChangesTo DataService="ApplicationDataMapping" />
+    </Screen.Attributes>
+    <Screen.Methods>
+      <ScreenMethod Name="Save">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+          <ImageResource ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Save.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod Name="Refresh">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+          <ImageResource ResourceId="Microsoft.LightSwitch.BuiltInImageResources::BuiltInResources/Refresh.png" />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+      <ScreenMethod Name="Close">
+        <ScreenMethod.Attributes>
+          <DisplayMethodByDefault Display="True" />
+          <Generated />
+        </ScreenMethod.Attributes>
+      </ScreenMethod>
+    </Screen.Methods>
+    <Screen.Properties>
+      <ScreenCollectionProperty DisableSearch="True"
+                                Name="prisonsInHell"
+                                PageSize="45"
+                                PropertyType="CollectionView$Prison">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition Name="prisonsInHellQuery"
+                                 ReturnType="Prison*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <MemberExpression Member="ApplicationData/Members[prisonsInHell]" />
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression Target="prisonsInHellListDetail/Properties[prisonsInHell]/Query" />
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+    </Screen.Properties>
+    <Screen.RootContentItem>
+      <ContentItem Kind="Screen"
+                   Name="RootContentItem">
+        <ContentItem.CommandItems>
+          <ContentItem Kind="Command"
+                       Name="Save">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression Target="prisonsInHellListDetail/Methods[Save]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem Kind="Command"
+                       Name="Refresh">
+            <ContentItem.DataSource>
+              <ScreenExpressionTree>
+                <ChainExpression>
+                  <CallExpression Target="prisonsInHellListDetail/Methods[Refresh]" />
+                </ChainExpression>
+              </ScreenExpressionTree>
+            </ContentItem.DataSource>
+          </ContentItem>
+        </ContentItem.CommandItems>
+        <ContentItem Kind="Group"
+                     Name="ScreenLayout"
+                     View="Microsoft.LightSwitch:ColumnsLayout">
+          <ContentItem Kind="Group"
+                       Name="ListColumn">
+            <ContentItem.PropertySources>
+              <ControlPropertySource Property=":ColumnsLayout/Properties[WeightedColumnWidth]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":Double"
+                                        Value="2" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+            <ContentItem DataType="CollectionView$Prison"
+                         Kind="Collection"
+                         Name="PrisonList"
+                         View="Microsoft.LightSwitch:List">
+              <ContentItem.CommandItems>
+                <ContentItem Kind="Command"
+                             Name="prisonsInHell_AddAndEditNew">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="prisonsInHellListDetail/Properties[prisonsInHell]" />
+                        <CallExpression Target="AddAndEditNew" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem Kind="Command"
+                             Name="prisonsInHell_EditSelected">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="prisonsInHellListDetail/Properties[prisonsInHell]" />
+                        <CallExpression Target="EditSelected" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem Kind="Command"
+                             Name="prisonsInHell_DeleteSelected">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="prisonsInHellListDetail/Properties[prisonsInHell]" />
+                        <CallExpression Target="DeleteSelected" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem.CommandItems>
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression Member="prisonsInHellListDetail/Properties[prisonsInHell]" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem.PropertySources>
+                <ControlPropertySource Property=":RootControl/Properties[AttachedLabelPosition]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression ResultType=":String"
+                                          Value="Collapsed" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+                <ControlPropertySource Property=":RootControl/Properties[VerticalAlignment]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression ResultType=":String"
+                                          Value="Stretch" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+              <ContentItem DataType="Prison"
+                           Kind="Details"
+                           Name="RowTemplate">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression />
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+                <ContentItem DataType=":String"
+                             Kind="Value"
+                             Name="Name">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="Prison/Properties[Name]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem DataType=":String"
+                             Kind="Value"
+                             Name="Address">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="Prison/Properties[Address]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+            </ContentItem>
+          </ContentItem>
+          <ContentItem Kind="Group"
+                       Name="DetailsColumn">
+            <ContentItem.PropertySources>
+              <ControlPropertySource Property=":ScrollableControl/Properties[IsVerticalScrollBarEnabled]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":Boolean"
+                                        Value="True" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+              <ControlPropertySource Property=":ColumnsLayout/Properties[WeightedColumnWidth]">
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <ConstantExpression ResultType=":Double"
+                                        Value="3" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+            <ContentItem DataType="Prison"
+                         Kind="Details"
+                         Name="PrisonDetails">
+              <ContentItem.Attributes>
+                <DisplayName Value="Prison Details" />
+              </ContentItem.Attributes>
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression Member="prisonsInHellListDetail/Properties[prisonsInHell]" />
+                    <MemberExpression Member="SelectedItem" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem.PropertySources>
+                <ControlPropertySource Property=":RootControl/Properties[VerticalAlignment]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression ResultType=":String"
+                                          Value="Top" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="Name1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="Prison/Properties[Name]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="Address1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="Prison/Properties[Address]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":Int32"
+                           Kind="Value"
+                           Name="Id">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="Prison/Properties[Id]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+            </ContentItem>
+          </ContentItem>
+        </ContentItem>
+      </ContentItem>
+    </Screen.RootContentItem>
+  </Screen>
+
+</ModelFragment>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Namespace="ApplicationData" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityType Name="People">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" ConcurrencyMode="Fixed" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="255" ConcurrencyMode="Fixed" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="255" ConcurrencyMode="Fixed" />
+    <Property Name="DateOfBirth" Type="DateTime" Nullable="false" ConcurrencyMode="Fixed" />
+  </EntityType>
+  <EntityType Name="Prison">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" ConcurrencyMode="Fixed" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="255" ConcurrencyMode="Fixed" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="255" ConcurrencyMode="Fixed" />
+  </EntityType>
+  <EntityType Name="Table1Item">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" ConcurrencyMode="Fixed" />
+    <Property Name="wowo" Type="String" Nullable="false" MaxLength="255" ConcurrencyMode="Fixed" />
+    <Property Name="morestuff" Type="String" Nullable="false" MaxLength="255" ConcurrencyMode="Fixed" />
+  </EntityType>
+  <EntityType Name="Table2Item">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" ConcurrencyMode="Fixed" />
+  </EntityType>
+  <EntityContainer Name="ApplicationDataObjectContext">
+    <EntitySet Name="PeopleSet" EntityType="ApplicationData.People" />
+    <EntitySet Name="Prisons" EntityType="ApplicationData.Prison" />
+    <EntitySet Name="Table1Items" EntityType="ApplicationData.Table1Item" />
+    <EntitySet Name="Table2Items" EntityType="ApplicationData.Table2Item" />
+  </EntityContainer>
+</Schema>
