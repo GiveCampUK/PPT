@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{78D5594A-4E20-4F95-9844-D5EDECD84AE0}</ProjectGuid>
+    <ProjectGuid>{68785234-E077-4476-BE26-8A5FFBE90E55}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ppt.domain</RootNamespace>
-    <AssemblyName>ppt.domain</AssemblyName>
+    <RootNamespace>ppt.core</RootNamespace>
+    <AssemblyName>ppt.core</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -86,16 +86,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\ContactDetails.cs" />
     <Compile Include="Entities\AggregateRoot.cs" />
+    <Compile Include="Entities\Class.cs" />
+    <Compile Include="Entities\ContactDetails.cs" />
     <Compile Include="Entities\Correspondence.cs" />
     <Compile Include="Entities\Institution.cs" />
     <Compile Include="Entities\InstitutionContact.cs" />
-    <Compile Include="Entities\ServiceUser.cs" />
-    <Compile Include="Entities\Class.cs" />
     <Compile Include="Entities\Instructor.cs" />
+    <Compile Include="Entities\ServiceUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Requests\InstructorRegistrationRequest.cs" />
+    <Compile Include="Services\InstructorService.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

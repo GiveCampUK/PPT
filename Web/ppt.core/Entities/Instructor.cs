@@ -1,4 +1,4 @@
-﻿namespace ppt.domain.Entities
+﻿namespace ppt.core.Entities
 {
     public class Instructor : AggregateRoot
     {
@@ -12,5 +12,13 @@
     {
         Yoga,
         Meditation,
+    }
+
+    public enum InstructorStatus
+    {
+        Applied,
+        Approved,
+        Active,
+        Dormant,
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ppt.domain.Entities
+namespace ppt.core.Entities
 {
     public class Class
     {
