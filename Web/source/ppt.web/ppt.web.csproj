@@ -1652,7 +1652,9 @@
     <Content Include="umbraco_client\ui\ui-lightness\images\ui-icons_ffd27a_256x240.png" />
     <Content Include="umbraco_client\ui\ui-lightness\images\ui-icons_ffffff_256x240.png" />
     <Content Include="umbraco_client\ui\ui-lightness\jquery-ui-1.8.4.custom.css" />
-    <Content Include="web.config" />
+    <Content Include="web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="umbraco\app_data\umbraco.config" />
     <None Include="umbraco\dashboard\air\DesktopMediaUploader.air" />
     <None Include="umbraco\LiveEditing\LiveEditing.cd" />
