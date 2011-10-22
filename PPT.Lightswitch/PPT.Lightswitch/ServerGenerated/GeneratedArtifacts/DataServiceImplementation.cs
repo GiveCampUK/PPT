@@ -12,6 +12,313 @@ using global::System.Linq;
 namespace LightSwitchApplication.Implementation
 {
     
+    [global::System.ServiceModel.DomainServices.Hosting.EnableClientAccess()]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "10.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public class ApplicationDataDomainService
+        : global::Microsoft.LightSwitch.ServerGenerated.Implementation.DomainService<global::ApplicationData.Implementation.ApplicationDataObjectContext>
+    {
+    
+        public ApplicationDataDomainService() : base()
+        {
+        }
+    
+    #region Public Methods
+    
+    #region Contacts
+    
+        public void InsertContacts(global::ApplicationData.Implementation.Contacts entity)
+        {
+            if (entity.EntityState != global::System.Data.EntityState.Detached)
+            {
+                this.ObjectContext.ObjectStateManager.ChangeObjectState(entity, global::System.Data.EntityState.Added);
+            }
+            else
+            {
+                this.ObjectContext.ContactsSet.AddObject(entity);
+            }
+        }
+    
+        public void UpdateContacts(global::ApplicationData.Implementation.Contacts currentEntity)
+        {
+            global::System.ServiceModel.DomainServices.EntityFramework.ObjectContextExtensions.AttachAsModified(this.ObjectContext.ContactsSet, currentEntity, this.ChangeSet.GetOriginal(currentEntity));
+        }
+    
+        public void DeleteContacts(global::ApplicationData.Implementation.Contacts entity)
+        {
+            if (entity.EntityState == global::System.Data.EntityState.Detached)
+            {
+                this.ObjectContext.ContactsSet.Attach(entity);
+            }
+    
+            this.DeleteEntity(entity);
+        }
+    #endregion
+    
+    #region ContactTypes
+    
+        public void InsertContactTypes(global::ApplicationData.Implementation.ContactTypes entity)
+        {
+            if (entity.EntityState != global::System.Data.EntityState.Detached)
+            {
+                this.ObjectContext.ObjectStateManager.ChangeObjectState(entity, global::System.Data.EntityState.Added);
+            }
+            else
+            {
+                this.ObjectContext.ContactTypesSet.AddObject(entity);
+            }
+        }
+    
+        public void UpdateContactTypes(global::ApplicationData.Implementation.ContactTypes currentEntity)
+        {
+            global::System.ServiceModel.DomainServices.EntityFramework.ObjectContextExtensions.AttachAsModified(this.ObjectContext.ContactTypesSet, currentEntity, this.ChangeSet.GetOriginal(currentEntity));
+        }
+    
+        public void DeleteContactTypes(global::ApplicationData.Implementation.ContactTypes entity)
+        {
+            if (entity.EntityState == global::System.Data.EntityState.Detached)
+            {
+                this.ObjectContext.ContactTypesSet.Attach(entity);
+            }
+    
+            this.DeleteEntity(entity);
+        }
+    #endregion
+    
+    #region Countries
+    
+        public void InsertCountries(global::ApplicationData.Implementation.Countries entity)
+        {
+            if (entity.EntityState != global::System.Data.EntityState.Detached)
+            {
+                this.ObjectContext.ObjectStateManager.ChangeObjectState(entity, global::System.Data.EntityState.Added);
+            }
+            else
+            {
+                this.ObjectContext.CountriesSet.AddObject(entity);
+            }
+        }
+    
+        public void UpdateCountries(global::ApplicationData.Implementation.Countries currentEntity)
+        {
+            global::System.ServiceModel.DomainServices.EntityFramework.ObjectContextExtensions.AttachAsModified(this.ObjectContext.CountriesSet, currentEntity, this.ChangeSet.GetOriginal(currentEntity));
+        }
+    
+        public void DeleteCountries(global::ApplicationData.Implementation.Countries entity)
+        {
+            if (entity.EntityState == global::System.Data.EntityState.Detached)
+            {
+                this.ObjectContext.CountriesSet.Attach(entity);
+            }
+    
+            this.DeleteEntity(entity);
+        }
+    #endregion
+    
+    #region Queries
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Contacts> ContactsSet_Single(string frameworkOperators, global::System.Nullable<int> Id)
+        {
+            return this.GetQuery<global::ApplicationData.Implementation.Contacts>("ContactsSet_Single", frameworkOperators, Id);
+        }
+    
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Contacts> ContactsSet_SingleOrDefault(string frameworkOperators, global::System.Nullable<int> Id)
+        {
+            return this.GetQuery<global::ApplicationData.Implementation.Contacts>("ContactsSet_SingleOrDefault", frameworkOperators, Id);
+        }
+    
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Contacts> ContactsSet_All(string frameworkOperators)
+        {
+            return this.GetQuery<global::ApplicationData.Implementation.Contacts>("ContactsSet_All", frameworkOperators);
+        }
+    
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.ContactTypes> ContactTypesSet_Single(string frameworkOperators, global::System.Nullable<int> Id)
+        {
+            return this.GetQuery<global::ApplicationData.Implementation.ContactTypes>("ContactTypesSet_Single", frameworkOperators, Id);
+        }
+    
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.ContactTypes> ContactTypesSet_SingleOrDefault(string frameworkOperators, global::System.Nullable<int> Id)
+        {
+            return this.GetQuery<global::ApplicationData.Implementation.ContactTypes>("ContactTypesSet_SingleOrDefault", frameworkOperators, Id);
+        }
+    
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.ContactTypes> ContactTypesSet_All(string frameworkOperators)
+        {
+            return this.GetQuery<global::ApplicationData.Implementation.ContactTypes>("ContactTypesSet_All", frameworkOperators);
+        }
+    
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Countries> CountriesSet_Single(string frameworkOperators, global::System.Nullable<int> Id)
+        {
+            return this.GetQuery<global::ApplicationData.Implementation.Countries>("CountriesSet_Single", frameworkOperators, Id);
+        }
+    
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Countries> CountriesSet_SingleOrDefault(string frameworkOperators, global::System.Nullable<int> Id)
+        {
+            return this.GetQuery<global::ApplicationData.Implementation.Countries>("CountriesSet_SingleOrDefault", frameworkOperators, Id);
+        }
+    
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Countries> CountriesSet_All(string frameworkOperators)
+        {
+            return this.GetQuery<global::ApplicationData.Implementation.Countries>("CountriesSet_All", frameworkOperators);
+        }
+    
+    #endregion
+    
+        [global::System.ServiceModel.DomainServices.Server.Invoke(HasSideEffects=false)]
+        public int __GetEntitySetCanInformation(string entitySetName)
+        {
+            return base.GetEntitySetCanInformation(entitySetName);
+        }
+    
+        [global::System.ServiceModel.DomainServices.Server.Invoke(HasSideEffects=false)]
+        public bool __CanExecuteOperation(string operationName)
+        {
+            return base.CanExecuteOperation(operationName);
+        }
+    
+    #endregion
+    
+        protected override global::Microsoft.LightSwitch.IDataService CreateDataService()
+        {
+            return new global::LightSwitchApplication.DataWorkspace().ApplicationData;
+        }
+    
+    }
+    
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "10.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public class ApplicationDataServiceImplementation
+        : global::Microsoft.LightSwitch.ServerGenerated.Implementation.DataServiceImplementation<global::ApplicationData.Implementation.ApplicationDataObjectContext>
+    {
+        public ApplicationDataServiceImplementation(global::Microsoft.LightSwitch.IDataService dataService) : base(dataService)
+        {
+        }
+    
+    #region Queries
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Contacts> ContactsSet_Single(global::System.Nullable<int> Id)
+        {
+            global::System.Linq.IQueryable<global::ApplicationData.Implementation.Contacts> query;
+            query = global::System.Linq.Queryable.Where(
+                this.GetQuery<global::ApplicationData.Implementation.Contacts>("ContactsSet_All"),
+                (c) => (Id.HasValue && (c.Id == Id)));
+            return query;
+        }
+    
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Contacts> ContactsSet_SingleOrDefault(global::System.Nullable<int> Id)
+        {
+            global::System.Linq.IQueryable<global::ApplicationData.Implementation.Contacts> query;
+            query = global::System.Linq.Queryable.Where(
+                this.GetQuery<global::ApplicationData.Implementation.Contacts>("ContactsSet_All"),
+                (c) => (Id.HasValue && (c.Id == Id)));
+            return query;
+        }
+    
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Contacts> ContactsSet_All()
+        {
+            global::System.Linq.IQueryable<global::ApplicationData.Implementation.Contacts> query;
+            query = base.CreateQuery<global::ApplicationData.Implementation.Contacts>("[ContactsSet]").AsQueryable();
+            return query;
+        }
+    
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.ContactTypes> ContactTypesSet_Single(global::System.Nullable<int> Id)
+        {
+            global::System.Linq.IQueryable<global::ApplicationData.Implementation.ContactTypes> query;
+            query = global::System.Linq.Queryable.Where(
+                this.GetQuery<global::ApplicationData.Implementation.ContactTypes>("ContactTypesSet_All"),
+                (c) => (Id.HasValue && (c.Id == Id)));
+            return query;
+        }
+    
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.ContactTypes> ContactTypesSet_SingleOrDefault(global::System.Nullable<int> Id)
+        {
+            global::System.Linq.IQueryable<global::ApplicationData.Implementation.ContactTypes> query;
+            query = global::System.Linq.Queryable.Where(
+                this.GetQuery<global::ApplicationData.Implementation.ContactTypes>("ContactTypesSet_All"),
+                (c) => (Id.HasValue && (c.Id == Id)));
+            return query;
+        }
+    
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.ContactTypes> ContactTypesSet_All()
+        {
+            global::System.Linq.IQueryable<global::ApplicationData.Implementation.ContactTypes> query;
+            query = base.CreateQuery<global::ApplicationData.Implementation.ContactTypes>("[ContactTypesSet]").AsQueryable();
+            return query;
+        }
+    
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Countries> CountriesSet_Single(global::System.Nullable<int> Id)
+        {
+            global::System.Linq.IQueryable<global::ApplicationData.Implementation.Countries> query;
+            query = global::System.Linq.Queryable.Where(
+                this.GetQuery<global::ApplicationData.Implementation.Countries>("CountriesSet_All"),
+                (c) => (Id.HasValue && (c.Id == Id)));
+            return query;
+        }
+    
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Countries> CountriesSet_SingleOrDefault(global::System.Nullable<int> Id)
+        {
+            global::System.Linq.IQueryable<global::ApplicationData.Implementation.Countries> query;
+            query = global::System.Linq.Queryable.Where(
+                this.GetQuery<global::ApplicationData.Implementation.Countries>("CountriesSet_All"),
+                (c) => (Id.HasValue && (c.Id == Id)));
+            return query;
+        }
+    
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Countries> CountriesSet_All()
+        {
+            global::System.Linq.IQueryable<global::ApplicationData.Implementation.Countries> query;
+            query = base.CreateQuery<global::ApplicationData.Implementation.Countries>("[CountriesSet]").AsQueryable();
+            return query;
+        }
+    
+    #endregion
+
+    #region Protected Methods
+        protected override object CreateObject(global::System.Type type)
+        {
+            if (type == typeof(global::ApplicationData.Implementation.Contacts))
+            {
+                return new global::ApplicationData.Implementation.Contacts();
+            }
+            if (type == typeof(global::ApplicationData.Implementation.ContactTypes))
+            {
+                return new global::ApplicationData.Implementation.ContactTypes();
+            }
+            if (type == typeof(global::ApplicationData.Implementation.Countries))
+            {
+                return new global::ApplicationData.Implementation.Countries();
+            }
+    
+            return base.CreateObject(type);
+        }
+    
+        protected override global::ApplicationData.Implementation.ApplicationDataObjectContext CreateObjectContext()
+        {
+            return new global::ApplicationData.Implementation.ApplicationDataObjectContext(base.GetEntityConnectionString(
+                "_IntrinsicData", 
+                "res://*/ApplicationData.csdl|res://*/ApplicationData.ssdl|res://*/ApplicationData.msl",
+                "System.Data.SqlClient"));
+        }
+    
+        protected override global::Microsoft.LightSwitch.Internal.IEntityImplementation CreateEntityImplementation<T>()
+        {
+            if (typeof(T) == typeof(global::LightSwitchApplication.Contacts))
+            {
+                return new global::ApplicationData.Implementation.Contacts();
+            }
+            if (typeof(T) == typeof(global::LightSwitchApplication.ContactTypes))
+            {
+                return new global::ApplicationData.Implementation.ContactTypes();
+            }
+            if (typeof(T) == typeof(global::LightSwitchApplication.Countries))
+            {
+                return new global::ApplicationData.Implementation.Countries();
+            }
+            return null;
+        }
+    
+    #endregion
+    
+    }
+    
     #region DataServiceImplementationFactory
     [global::System.ComponentModel.Composition.PartCreationPolicy(global::System.ComponentModel.Composition.CreationPolicy.Shared)]
     [global::System.ComponentModel.Composition.Export(typeof(global::Microsoft.LightSwitch.Internal.IDataServiceFactory))]
@@ -23,11 +330,19 @@ namespace LightSwitchApplication.Implementation
     
         protected override global::Microsoft.LightSwitch.IDataService CreateDataService(global::System.Type dataServiceType)
         {
+            if (dataServiceType == typeof(global::LightSwitchApplication.ApplicationData))
+            {
+                return new global::LightSwitchApplication.ApplicationDataService();
+            }
             return base.CreateDataService(dataServiceType);
         }
     
         protected override global::Microsoft.LightSwitch.Internal.IDataServiceImplementation CreateDataServiceImplementation<TDataService>(TDataService dataService)
         {
+            if (typeof(TDataService) == typeof(global::LightSwitchApplication.ApplicationData))
+            {
+                return new global::LightSwitchApplication.Implementation.ApplicationDataServiceImplementation(dataService);
+            }
             return base.CreateDataServiceImplementation(dataService);
         }
     }
@@ -42,8 +357,199 @@ namespace LightSwitchApplication.Implementation
     {
         global::System.Type global::Microsoft.LightSwitch.Internal.ITypeMappingProvider.GetImplementationType(global::System.Type definitionType)
         {
+            if (typeof(global::LightSwitchApplication.Contacts) == definitionType)
+            {
+                return typeof(global::ApplicationData.Implementation.Contacts);
+            }
+            if (typeof(global::LightSwitchApplication.ContactTypes) == definitionType)
+            {
+                return typeof(global::ApplicationData.Implementation.ContactTypes);
+            }
+            if (typeof(global::LightSwitchApplication.Countries) == definitionType)
+            {
+                return typeof(global::ApplicationData.Implementation.Countries);
+            }
             return null;
         }
     }
+}
+
+namespace ApplicationData.Implementation
+{
+
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "10.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    [global::System.ComponentModel.DataAnnotations.MetadataType(typeof(global::ApplicationData.Implementation.Contacts.Metadata))]
+    public partial class Contacts :
+        global::LightSwitchApplication.Contacts.DetailsClass.IImplementation
+    {
+    
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.Contacts.DetailsClass.IImplementation.PersonType
+        {
+            get
+            {
+                return this.PersonType;
+            }
+            set
+            {
+                this.PersonType = (global::ApplicationData.Implementation.ContactTypes)value;
+                if (this.__host != null)
+                {
+                    this.__host.RaisePropertyChanged("PersonType");
+                }
+            }
+        }
+        
+        partial void OnContacts_ContactTypesChanged()
+        {
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged("PersonType");
+            }
+        }
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.Contacts.DetailsClass.IImplementation.Country
+        {
+            get
+            {
+                return this.Country;
+            }
+            set
+            {
+                this.Country = (global::ApplicationData.Implementation.Countries)value;
+                if (this.__host != null)
+                {
+                    this.__host.RaisePropertyChanged("Country");
+                }
+            }
+        }
+        
+        partial void OnContacts_CountriesChanged()
+        {
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged("Country");
+            }
+        }
+        
+        #region IEntityImplementation Members
+        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
+        {
+            get
+            {
+                return this.__host;
+            }
+        }
+        
+        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
+        {
+            this.__host = host;
+        }
+        
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged(propertyName);
+            }
+        }
+        #endregion
+        
+        internal class Metadata
+        {
+            [global::System.ServiceModel.DomainServices.Server.Include]
+            public global::ApplicationData.Implementation.ContactTypes PersonType { get; set; }
+        
+            [global::System.ServiceModel.DomainServices.Server.Include]
+            public global::ApplicationData.Implementation.Countries Country { get; set; }
+        
+        }
+    }
+    
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "10.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public partial class ContactTypes :
+        global::LightSwitchApplication.ContactTypes.DetailsClass.IImplementation
+    {
+    
+        global::System.Collections.IEnumerable global::LightSwitchApplication.ContactTypes.DetailsClass.IImplementation.ContactsCollection
+        {
+            get
+            {
+                return this.ContactsCollection;
+            }
+        }
+        
+        #region IEntityImplementation Members
+        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
+        {
+            get
+            {
+                return this.__host;
+            }
+        }
+        
+        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
+        {
+            this.__host = host;
+        }
+        
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged(propertyName);
+            }
+        }
+        #endregion
+    }
+    
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "10.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public partial class Countries :
+        global::LightSwitchApplication.Countries.DetailsClass.IImplementation
+    {
+    
+        global::System.Collections.IEnumerable global::LightSwitchApplication.Countries.DetailsClass.IImplementation.ContactsCollection
+        {
+            get
+            {
+                return this.ContactsCollection;
+            }
+        }
+        
+        #region IEntityImplementation Members
+        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
+        {
+            get
+            {
+                return this.__host;
+            }
+        }
+        
+        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
+        {
+            this.__host = host;
+        }
+        
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged(propertyName);
+            }
+        }
+        #endregion
+    }
+    
 }
 
