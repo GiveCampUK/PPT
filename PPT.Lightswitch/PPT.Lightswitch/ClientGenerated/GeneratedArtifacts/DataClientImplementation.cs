@@ -415,6 +415,55 @@ namespace LightSwitchApplication.Implementation
             }
         }
         
+        [global::System.ComponentModel.DataAnnotations.Association("Prisoner_Contacts", "Id", "Id", IsForeignKey = false)]
+        [global::System.Xml.Serialization.XmlIgnore()]
+        public global::LightSwitchApplication.Implementation.Prisoner Prisoner
+        {
+            get
+            {
+                if (this._Prisoner == null)
+                {
+                    this._Prisoner = new global::System.ServiceModel.DomainServices.Client.EntityRef<global::LightSwitchApplication.Implementation.Prisoner>(this, "Prisoner", this.FilterPrisoner);
+                }
+                return this._Prisoner.Entity;
+            }
+            set
+            {
+                Prisoner previous = this.Prisoner;
+                if (previous != value)
+                {
+                    this.ValidateProperty("Prisoner", value);
+                    if (previous != null)
+                    {
+                        this._Prisoner.Entity = null;
+                        previous.ContactId = null;
+                    }
+                    this._Prisoner.Entity = value;
+                    if (value != null)
+                    {
+                        value.ContactId = this;
+                    }
+                    this.RaisePropertyChanged("Prisoner");
+                }
+            }
+        }
+        private global::System.ServiceModel.DomainServices.Client.EntityRef<global::LightSwitchApplication.Implementation.Prisoner> _Prisoner;
+        private bool FilterPrisoner(global::LightSwitchApplication.Implementation.Prisoner entity)
+        {
+            return global::System.Object.Equals(entity.Id, this.Id);
+        }
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.Contacts.DetailsClass.IImplementation.Prisoner
+        {
+            get
+            {
+                return this.Prisoner;
+            }
+            set
+            {
+                this.Prisoner = (global::LightSwitchApplication.Implementation.Prisoner)value;
+            }
+        }
+        
         #region IEntityImplementation Members
         private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
         
@@ -502,6 +551,27 @@ namespace LightSwitchApplication.Implementation
             }
         }
         private string _Name;
+        
+        [global::System.Runtime.Serialization.DataMember()]
+        [global::System.ComponentModel.DataAnnotations.RoundtripOriginal()]
+        public string Code
+        {
+            get
+            {
+                return this._Code;
+            }
+            set
+            {
+                if (this._Code != value)
+                {
+                    this.RaiseDataMemberChanging("Code");
+                    this.ValidateProperty("Code", value);
+                    this._Code = value;
+                    this.RaiseDataMemberChanged("Code");
+                }
+            }
+        }
+        private string _Code;
         
         [global::System.ComponentModel.DataAnnotations.Association("Contacts_ContactTypes", "Id", "Contacts_ContactTypes")]
         [global::System.Xml.Serialization.XmlIgnore()]
@@ -687,6 +757,151 @@ namespace LightSwitchApplication.Implementation
     }
     #endregion
     
+    #region Prisoner
+    [global::System.Runtime.Serialization.DataContract(Namespace = "http://schemas.datacontract.org/2004/07/ApplicationData.Implementation")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "10.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    public sealed class Prisoner :
+        global::System.ServiceModel.DomainServices.Client.Entity,
+        global::LightSwitchApplication.Prisoner.DetailsClass.IImplementation
+    {
+        public override object GetIdentity()
+        {
+            if (this.__host != null && this.__host.IsNewlyAdded)
+            {
+                return null;
+            }
+    
+            return this._Id;
+        }
+        [global::System.ComponentModel.DataAnnotations.Key()]
+        [global::System.ComponentModel.DataAnnotations.Editable(false, AllowInitialValue = true)]
+        [global::System.Runtime.Serialization.DataMember()]
+        [global::System.ComponentModel.DataAnnotations.RoundtripOriginal()]
+        public int Id
+        {
+            get
+            {
+                return this._Id;
+            }
+            set
+            {
+                if (this._Id != value)
+                {
+                    this.ValidateProperty("Id", value);
+                    this._Id = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        private int _Id;
+        
+        [global::System.Runtime.Serialization.DataMember()]
+        [global::System.ComponentModel.DataAnnotations.RoundtripOriginal()]
+        public string SomeData
+        {
+            get
+            {
+                return this._SomeData;
+            }
+            set
+            {
+                if (this._SomeData != value)
+                {
+                    this.RaiseDataMemberChanging("SomeData");
+                    this.ValidateProperty("SomeData", value);
+                    this._SomeData = value;
+                    this.RaiseDataMemberChanged("SomeData");
+                }
+            }
+        }
+        private string _SomeData;
+        
+        [global::System.ComponentModel.DataAnnotations.Association("Prisoner_Contacts", "Id", "Id", IsForeignKey = true)]
+        [global::System.Xml.Serialization.XmlIgnore()]
+        public global::LightSwitchApplication.Implementation.Contacts ContactId
+        {
+            get
+            {
+                if (this._ContactId == null)
+                {
+                    this._ContactId = new global::System.ServiceModel.DomainServices.Client.EntityRef<global::LightSwitchApplication.Implementation.Contacts>(this, "ContactId", this.FilterContactId);
+                }
+                return this._ContactId.Entity;
+            }
+            set
+            {
+                Contacts previous = this.ContactId;
+                if (previous != value)
+                {
+                    this.ValidateProperty("ContactId", value);
+                    if (previous != null)
+                    {
+                        this._ContactId.Entity = null;
+                        previous.Prisoner = null;
+                    }
+                    if (value != null)
+                    {
+                        this.Id = value.Id;
+                    }
+                    else
+                    {
+                        this.Id = default(int);
+                    }
+                    this._ContactId.Entity = value;
+                    if (value != null)
+                    {
+                        value.Prisoner = this;
+                    }
+                    this.RaisePropertyChanged("ContactId");
+                }
+            }
+        }
+        private global::System.ServiceModel.DomainServices.Client.EntityRef<global::LightSwitchApplication.Implementation.Contacts> _ContactId;
+        private bool FilterContactId(global::LightSwitchApplication.Implementation.Contacts entity)
+        {
+            return global::System.Object.Equals(entity.Id, this.Id);
+        }
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.Prisoner.DetailsClass.IImplementation.ContactId
+        {
+            get
+            {
+                return this.ContactId;
+            }
+            set
+            {
+                this.ContactId = (global::LightSwitchApplication.Implementation.Contacts)value;
+            }
+        }
+        
+        #region IEntityImplementation Members
+        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
+        {
+            get
+            {
+                return this.__host;
+            }
+        }
+        
+        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
+        {
+            this.__host = host;
+        }
+        
+        protected override void OnPropertyChanged(global::System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            base.OnPropertyChanged(e);
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged(e.PropertyName);
+            }
+        }
+        #endregion
+    }
+    #endregion
+    
     #region ApplicationData
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "10.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -719,6 +934,13 @@ namespace LightSwitchApplication.Implementation
                 return base.EntityContainer.GetEntitySet<global::LightSwitchApplication.Implementation.Countries>();
             }
         }
+        public global::System.ServiceModel.DomainServices.Client.EntitySet<global::LightSwitchApplication.Implementation.Prisoner> PrisonerEntityList
+        {
+            get
+            {
+                return base.EntityContainer.GetEntitySet<global::LightSwitchApplication.Implementation.Prisoner>();
+            }
+        }
         protected override global::System.ServiceModel.DomainServices.Client.EntityContainer CreateEntityContainer()
         {
             return new ApplicationDataEntityContainer();
@@ -731,6 +953,7 @@ namespace LightSwitchApplication.Implementation
                 this.CreateEntitySet<global::LightSwitchApplication.Implementation.Contacts>(global::System.ServiceModel.DomainServices.Client.EntitySetOperations.All);
                 this.CreateEntitySet<global::LightSwitchApplication.Implementation.ContactTypes>(global::System.ServiceModel.DomainServices.Client.EntitySetOperations.All);
                 this.CreateEntitySet<global::LightSwitchApplication.Implementation.Countries>(global::System.ServiceModel.DomainServices.Client.EntitySetOperations.All);
+                this.CreateEntitySet<global::LightSwitchApplication.Implementation.Prisoner>(global::System.ServiceModel.DomainServices.Client.EntitySetOperations.All);
             }
         }
     
@@ -793,6 +1016,24 @@ namespace LightSwitchApplication.Implementation
             global::System.IAsyncResult BeginCountriesSet_All(string frameworkOperators, global::System.AsyncCallback callback, global::System.Object asyncState);
             global::System.ServiceModel.DomainServices.Client.QueryResult<global::LightSwitchApplication.Implementation.Countries> EndCountriesSet_All(global::System.IAsyncResult result);
             
+            [global::System.ServiceModel.OperationContract(AsyncPattern = true, Action = "http://tempuri.org/ApplicationDataDomainService/Prisoners_Single", ReplyAction = "http://tempuri.org/ApplicationDataDomainService/Prisoners_SingleResponse"),
+             global::System.ServiceModel.Web.WebGet(),
+             global::System.ServiceModel.FaultContract(typeof(global::System.ServiceModel.DomainServices.Client.DomainServiceFault), Action = "http://tempuri.org/ApplicationDataDomainService/Prisoners_SingleDomainServiceFault", Name = "DomainServiceFault", Namespace = "DomainServices")]
+            global::System.IAsyncResult BeginPrisoners_Single(string frameworkOperators, global::System.Nullable<int> Id, global::System.AsyncCallback callback, global::System.Object asyncState);
+            global::System.ServiceModel.DomainServices.Client.QueryResult<global::LightSwitchApplication.Implementation.Prisoner> EndPrisoners_Single(global::System.IAsyncResult result);
+            
+            [global::System.ServiceModel.OperationContract(AsyncPattern = true, Action = "http://tempuri.org/ApplicationDataDomainService/Prisoners_SingleOrDefault", ReplyAction = "http://tempuri.org/ApplicationDataDomainService/Prisoners_SingleOrDefaultResponse"),
+             global::System.ServiceModel.Web.WebGet(),
+             global::System.ServiceModel.FaultContract(typeof(global::System.ServiceModel.DomainServices.Client.DomainServiceFault), Action = "http://tempuri.org/ApplicationDataDomainService/Prisoners_SingleOrDefaultDomainServiceFault", Name = "DomainServiceFault", Namespace = "DomainServices")]
+            global::System.IAsyncResult BeginPrisoners_SingleOrDefault(string frameworkOperators, global::System.Nullable<int> Id, global::System.AsyncCallback callback, global::System.Object asyncState);
+            global::System.ServiceModel.DomainServices.Client.QueryResult<global::LightSwitchApplication.Implementation.Prisoner> EndPrisoners_SingleOrDefault(global::System.IAsyncResult result);
+            
+            [global::System.ServiceModel.OperationContract(AsyncPattern = true, Action = "http://tempuri.org/ApplicationDataDomainService/Prisoners_All", ReplyAction = "http://tempuri.org/ApplicationDataDomainService/Prisoners_AllResponse"),
+             global::System.ServiceModel.Web.WebGet(),
+             global::System.ServiceModel.FaultContract(typeof(global::System.ServiceModel.DomainServices.Client.DomainServiceFault), Action = "http://tempuri.org/ApplicationDataDomainService/Prisoners_AllDomainServiceFault", Name = "DomainServiceFault", Namespace = "DomainServices")]
+            global::System.IAsyncResult BeginPrisoners_All(string frameworkOperators, global::System.AsyncCallback callback, global::System.Object asyncState);
+            global::System.ServiceModel.DomainServices.Client.QueryResult<global::LightSwitchApplication.Implementation.Prisoner> EndPrisoners_All(global::System.IAsyncResult result);
+            
             [global::System.ServiceModel.OperationContract(AsyncPattern = true, Action = "http://tempuri.org/ApplicationDataDomainService/SubmitChanges", ReplyAction = "http://tempuri.org/ApplicationDataDomainService/SubmitChangesResponse"),
              global::System.ServiceModel.FaultContract(typeof(global::System.ServiceModel.DomainServices.Client.DomainServiceFault), Action = "http://tempuri.org/ApplicationDataDomainService/SubmitChangesDomainServiceFault", Name = "DomainServiceFault", Namespace = "DomainServices")]
             global::System.IAsyncResult BeginSubmitChanges(global::System.Collections.Generic.IEnumerable<global::System.ServiceModel.DomainServices.Client.ChangeSetEntry> changeSet, global::System.AsyncCallback callback, global::System.Object asyncState);
@@ -827,6 +1068,10 @@ namespace LightSwitchApplication.Implementation
             if (typeof(T) == typeof(global::LightSwitchApplication.Countries))
             {
                 return new global::LightSwitchApplication.Implementation.Countries();
+            }
+            if (typeof(T) == typeof(global::LightSwitchApplication.Prisoner))
+            {
+                return new global::LightSwitchApplication.Implementation.Prisoner();
             }
             return null;
         }
@@ -882,6 +1127,10 @@ namespace LightSwitchApplication.Implementation
             if (typeof(global::LightSwitchApplication.Countries) == definitionType)
             {
                 return typeof(global::LightSwitchApplication.Implementation.Countries);
+            }
+            if (typeof(global::LightSwitchApplication.Prisoner) == definitionType)
+            {
+                return typeof(global::LightSwitchApplication.Implementation.Prisoner);
             }
             return null;
         }

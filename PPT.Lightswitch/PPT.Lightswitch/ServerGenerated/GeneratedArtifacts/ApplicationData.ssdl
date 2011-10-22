@@ -4,6 +4,7 @@
     <EntitySet Name="ContactsSet" EntityType="ApplicationDataStore.Contacts" store:Type="Tables" Schema="dbo" Table="ContactsSet" />
     <EntitySet Name="ContactTypesSet" EntityType="ApplicationDataStore.ContactTypes" store:Type="Tables" Schema="dbo" Table="ContactTypesSet" />
     <EntitySet Name="CountriesSet" EntityType="ApplicationDataStore.Countries" store:Type="Tables" Schema="dbo" Table="CountriesSet" />
+    <EntitySet Name="Prisoners" EntityType="ApplicationDataStore.Prisoner" store:Type="Tables" Schema="dbo" Table="Prisoners" />
     <AssociationSet Name="Contacts_ContactTypes" Association="ApplicationDataStore.Contacts_ContactTypes">
       <End Role="ContactTypes" EntitySet="ContactTypesSet" />
       <End Role="Contacts" EntitySet="ContactsSet" />
@@ -11,6 +12,10 @@
     <AssociationSet Name="Contacts_Countries" Association="ApplicationDataStore.Contacts_Countries">
       <End Role="Countries" EntitySet="CountriesSet" />
       <End Role="Contacts" EntitySet="ContactsSet" />
+    </AssociationSet>
+    <AssociationSet Name="Prisoner_Contacts" Association="ApplicationDataStore.Prisoner_Contacts">
+      <End Role="Contacts" EntitySet="ContactsSet" />
+      <End Role="Prisoner" EntitySet="Prisoners" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Contacts">
@@ -37,6 +42,7 @@
     </Key>
     <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="255" />
   </EntityType>
   <EntityType Name="Countries">
     <Key>
@@ -44,6 +50,13 @@
     </Key>
     <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Prisoner">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="SomeData" Type="nvarchar" Nullable="false" MaxLength="255" />
   </EntityType>
   <Association Name="Contacts_ContactTypes">
     <End Role="ContactTypes" Type="ApplicationDataStore.ContactTypes" Multiplicity="1" />
@@ -66,6 +79,20 @@
       </Principal>
       <Dependent Role="Contacts">
         <PropertyRef Name="Contacts_Countries" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Prisoner_Contacts">
+    <End Role="Contacts" Type="ApplicationDataStore.Contacts" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Prisoner" Type="ApplicationDataStore.Prisoner" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Contacts">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Prisoner">
+        <PropertyRef Name="Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

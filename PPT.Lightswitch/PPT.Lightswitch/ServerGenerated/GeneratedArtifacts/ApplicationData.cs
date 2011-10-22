@@ -20,6 +20,7 @@ using System.Runtime.Serialization;
 
 [assembly: EdmRelationshipAttribute("ApplicationData", "Contacts_ContactTypes", "ContactTypes", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ApplicationData.Implementation.ContactTypes), "Contacts", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ApplicationData.Implementation.Contacts), true)]
 [assembly: EdmRelationshipAttribute("ApplicationData", "Contacts_Countries", "Countries", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ApplicationData.Implementation.Countries), "Contacts", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ApplicationData.Implementation.Contacts), true)]
+[assembly: EdmRelationshipAttribute("ApplicationData", "Prisoner_Contacts", "Contacts", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ApplicationData.Implementation.Contacts), "Prisoner", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(ApplicationData.Implementation.Prisoner), true)]
 
 #endregion
 
@@ -115,6 +116,22 @@ namespace ApplicationData.Implementation
             }
         }
         private ObjectSet<Countries> _CountriesSet;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Prisoner> Prisoners
+        {
+            get
+            {
+                if ((_Prisoners == null))
+                {
+                    _Prisoners = base.CreateObjectSet<Prisoner>("Prisoners");
+                }
+                return _Prisoners;
+            }
+        }
+        private ObjectSet<Prisoner> _Prisoners;
 
         #endregion
         #region AddTo Methods
@@ -141,6 +158,14 @@ namespace ApplicationData.Implementation
         public void AddToCountriesSet(Countries countries)
         {
             base.AddObject("CountriesSet", countries);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Prisoners EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToPrisoners(Prisoner prisoner)
+        {
+            base.AddObject("Prisoners", prisoner);
         }
 
         #endregion
@@ -593,6 +618,44 @@ namespace ApplicationData.Implementation
                 }
             }
         }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationData", "Prisoner_Contacts", "Prisoner")]
+        public Prisoner Prisoner
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Prisoner>("ApplicationData.Prisoner_Contacts", "Prisoner").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Prisoner>("ApplicationData.Prisoner_Contacts", "Prisoner").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Prisoner> PrisonerReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Prisoner>("ApplicationData.Prisoner_Contacts", "Prisoner");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Prisoner>("ApplicationData.Prisoner_Contacts", "Prisoner", value);
+                }
+            }
+        }
 
         #endregion
     }
@@ -612,11 +675,13 @@ namespace ApplicationData.Implementation
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
-        public static ContactTypes CreateContactTypes(global::System.Int32 id, global::System.String name)
+        /// <param name="code">Initial value of the Code property.</param>
+        public static ContactTypes CreateContactTypes(global::System.Int32 id, global::System.String name, global::System.String code)
         {
             ContactTypes contactTypes = new ContactTypes();
             contactTypes.Id = id;
             contactTypes.Name = name;
+            contactTypes.Code = code;
             return contactTypes;
         }
 
@@ -673,6 +738,30 @@ namespace ApplicationData.Implementation
         private global::System.String _Name;
         partial void OnNameChanging(global::System.String value);
         partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Code
+        {
+            get
+            {
+                return _Code;
+            }
+            set
+            {
+                OnCodeChanging(value);
+                ReportPropertyChanging("Code");
+                _Code = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Code");
+                OnCodeChanged();
+            }
+        }
+        private global::System.String _Code;
+        partial void OnCodeChanging(global::System.String value);
+        partial void OnCodeChanged();
 
         #endregion
     
@@ -802,6 +891,128 @@ namespace ApplicationData.Implementation
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Contacts>("ApplicationData.Contacts_Countries", "Contacts", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="ApplicationData", Name="Prisoner")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Prisoner : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Prisoner object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="someData">Initial value of the SomeData property.</param>
+        public static Prisoner CreatePrisoner(global::System.Int32 id, global::System.String someData)
+        {
+            Prisoner prisoner = new Prisoner();
+            prisoner.Id = id;
+            prisoner.SomeData = someData;
+            return prisoner;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String SomeData
+        {
+            get
+            {
+                return _SomeData;
+            }
+            set
+            {
+                OnSomeDataChanging(value);
+                ReportPropertyChanging("SomeData");
+                _SomeData = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("SomeData");
+                OnSomeDataChanged();
+            }
+        }
+        private global::System.String _SomeData;
+        partial void OnSomeDataChanging(global::System.String value);
+        partial void OnSomeDataChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("ApplicationData", "Prisoner_Contacts", "Contacts")]
+        public Contacts ContactId
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Contacts>("ApplicationData.Prisoner_Contacts", "Contacts").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Contacts>("ApplicationData.Prisoner_Contacts", "Contacts").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Contacts> ContactIdReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Contacts>("ApplicationData.Prisoner_Contacts", "Contacts");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Contacts>("ApplicationData.Prisoner_Contacts", "Contacts", value);
                 }
             }
         }

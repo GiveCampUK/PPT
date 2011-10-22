@@ -131,6 +131,30 @@ namespace LightSwitchApplication
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "10.0.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public string Code
+        {
+            get
+            {
+                return global::LightSwitchApplication.ContactTypes.DetailsClass.GetValue(this, global::LightSwitchApplication.ContactTypes.DetailsClass.PropertySetProperties.Code);
+            }
+            set
+            {
+                global::LightSwitchApplication.ContactTypes.DetailsClass.SetValue(this, global::LightSwitchApplication.ContactTypes.DetailsClass.PropertySetProperties.Code, value);
+            }
+        }
+        
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void Code_IsReadOnly(ref bool result);
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void Code_Validate(global::Microsoft.LightSwitch.EntityValidationResultsBuilder results);
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void Code_Changed();
+
+        /// <summary>
+        /// No Modeled Description Available
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "10.0.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public global::Microsoft.LightSwitch.Framework.EntityCollection<global::LightSwitchApplication.Contacts> ContactsCollection
         {
             get
@@ -247,6 +271,14 @@ namespace LightSwitchApplication
                     }
                 }
                 
+                public global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ContactTypes, global::LightSwitchApplication.ContactTypes.DetailsClass, string> Code
+                {
+                    get
+                    {
+                        return base.GetItem(global::LightSwitchApplication.ContactTypes.DetailsClass.PropertySetProperties.Code) as global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ContactTypes, global::LightSwitchApplication.ContactTypes.DetailsClass, string>;
+                    }
+                }
+                
                 public global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ContactTypes, global::LightSwitchApplication.ContactTypes.DetailsClass, global::LightSwitchApplication.Contacts> ContactsCollection
                 {
                     get
@@ -263,6 +295,7 @@ namespace LightSwitchApplication
             {
                 new int Id { get; set; }
                 new string Name { get; set; }
+                new string Code { get; set; }
                 new global::System.Collections.IEnumerable ContactsCollection { get; }
             }
             #pragma warning restore 109
@@ -348,6 +381,43 @@ namespace LightSwitchApplication
                 }
     
                 [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ContactTypes, global::LightSwitchApplication.ContactTypes.DetailsClass, string>.Entry
+                    Code = new global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ContactTypes, global::LightSwitchApplication.ContactTypes.DetailsClass, string>.Entry(
+                        "Code",
+                        global::LightSwitchApplication.ContactTypes.DetailsClass.PropertySetProperties._Code_Stub,
+                        global::LightSwitchApplication.ContactTypes.DetailsClass.PropertySetProperties._Code_ComputeIsReadOnly,
+                        global::LightSwitchApplication.ContactTypes.DetailsClass.PropertySetProperties._Code_Validate,
+                        global::LightSwitchApplication.ContactTypes.DetailsClass.PropertySetProperties._Code_GetImplementationValue,
+                        global::LightSwitchApplication.ContactTypes.DetailsClass.PropertySetProperties._Code_SetImplementationValue,
+                        global::LightSwitchApplication.ContactTypes.DetailsClass.PropertySetProperties._Code_OnValueChanged);
+                private static void _Code_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.ContactTypes.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ContactTypes, global::LightSwitchApplication.ContactTypes.DetailsClass, string>.Data> c, global::LightSwitchApplication.ContactTypes.DetailsClass d, object sf)
+                {
+                    c(d, ref d._Code, sf);
+                }
+                private static bool _Code_ComputeIsReadOnly(global::LightSwitchApplication.ContactTypes e)
+                {
+                    bool result = false;
+                    e.Code_IsReadOnly(ref result);
+                    return result;
+                }
+                private static void _Code_Validate(global::LightSwitchApplication.ContactTypes e, global::Microsoft.LightSwitch.EntityValidationResultsBuilder r)
+                {
+                    e.Code_Validate(r);
+                }
+                private static string _Code_GetImplementationValue(global::LightSwitchApplication.ContactTypes.DetailsClass d)
+                {
+                    return d.ImplementationEntity.Code;
+                }
+                private static void _Code_SetImplementationValue(global::LightSwitchApplication.ContactTypes.DetailsClass d, string v)
+                {
+                    d.ImplementationEntity.Code = v;
+                }
+                private static void _Code_OnValueChanged(global::LightSwitchApplication.ContactTypes e)
+                {
+                    e.Code_Changed();
+                }
+    
+                [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
                 public static readonly global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ContactTypes, global::LightSwitchApplication.ContactTypes.DetailsClass, global::LightSwitchApplication.Contacts>.Entry
                     ContactsCollection = new global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ContactTypes, global::LightSwitchApplication.ContactTypes.DetailsClass, global::LightSwitchApplication.Contacts>.Entry(
                         "ContactsCollection",
@@ -374,6 +444,9 @@ namespace LightSwitchApplication
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
             private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ContactTypes, global::LightSwitchApplication.ContactTypes.DetailsClass, string>.Data _Name;
+            
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private global::Microsoft.LightSwitch.Details.Framework.EntityStorageProperty<global::LightSwitchApplication.ContactTypes, global::LightSwitchApplication.ContactTypes.DetailsClass, string>.Data _Code;
             
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
             private global::Microsoft.LightSwitch.Details.Framework.EntityCollectionProperty<global::LightSwitchApplication.ContactTypes, global::LightSwitchApplication.ContactTypes.DetailsClass, global::LightSwitchApplication.Contacts>.Data _ContactsCollection;

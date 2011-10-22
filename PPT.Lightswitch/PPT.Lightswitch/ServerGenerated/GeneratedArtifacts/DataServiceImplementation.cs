@@ -115,6 +115,36 @@ namespace LightSwitchApplication.Implementation
         }
     #endregion
     
+    #region Prisoner
+    
+        public void InsertPrisoner(global::ApplicationData.Implementation.Prisoner entity)
+        {
+            if (entity.EntityState != global::System.Data.EntityState.Detached)
+            {
+                this.ObjectContext.ObjectStateManager.ChangeObjectState(entity, global::System.Data.EntityState.Added);
+            }
+            else
+            {
+                this.ObjectContext.Prisoners.AddObject(entity);
+            }
+        }
+    
+        public void UpdatePrisoner(global::ApplicationData.Implementation.Prisoner currentEntity)
+        {
+            global::System.ServiceModel.DomainServices.EntityFramework.ObjectContextExtensions.AttachAsModified(this.ObjectContext.Prisoners, currentEntity, this.ChangeSet.GetOriginal(currentEntity));
+        }
+    
+        public void DeletePrisoner(global::ApplicationData.Implementation.Prisoner entity)
+        {
+            if (entity.EntityState == global::System.Data.EntityState.Detached)
+            {
+                this.ObjectContext.Prisoners.Attach(entity);
+            }
+    
+            this.DeleteEntity(entity);
+        }
+    #endregion
+    
     #region Queries
         public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Contacts> ContactsSet_Single(string frameworkOperators, global::System.Nullable<int> Id)
         {
@@ -159,6 +189,21 @@ namespace LightSwitchApplication.Implementation
         public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Countries> CountriesSet_All(string frameworkOperators)
         {
             return this.GetQuery<global::ApplicationData.Implementation.Countries>("CountriesSet_All", frameworkOperators);
+        }
+    
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Prisoner> Prisoners_Single(string frameworkOperators, global::System.Nullable<int> Id)
+        {
+            return this.GetQuery<global::ApplicationData.Implementation.Prisoner>("Prisoners_Single", frameworkOperators, Id);
+        }
+    
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Prisoner> Prisoners_SingleOrDefault(string frameworkOperators, global::System.Nullable<int> Id)
+        {
+            return this.GetQuery<global::ApplicationData.Implementation.Prisoner>("Prisoners_SingleOrDefault", frameworkOperators, Id);
+        }
+    
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Prisoner> Prisoners_All(string frameworkOperators)
+        {
+            return this.GetQuery<global::ApplicationData.Implementation.Prisoner>("Prisoners_All", frameworkOperators);
         }
     
     #endregion
@@ -269,6 +314,31 @@ namespace LightSwitchApplication.Implementation
             return query;
         }
     
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Prisoner> Prisoners_Single(global::System.Nullable<int> Id)
+        {
+            global::System.Linq.IQueryable<global::ApplicationData.Implementation.Prisoner> query;
+            query = global::System.Linq.Queryable.Where(
+                this.GetQuery<global::ApplicationData.Implementation.Prisoner>("Prisoners_All"),
+                (p) => (Id.HasValue && (p.Id == Id)));
+            return query;
+        }
+    
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Prisoner> Prisoners_SingleOrDefault(global::System.Nullable<int> Id)
+        {
+            global::System.Linq.IQueryable<global::ApplicationData.Implementation.Prisoner> query;
+            query = global::System.Linq.Queryable.Where(
+                this.GetQuery<global::ApplicationData.Implementation.Prisoner>("Prisoners_All"),
+                (p) => (Id.HasValue && (p.Id == Id)));
+            return query;
+        }
+    
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Prisoner> Prisoners_All()
+        {
+            global::System.Linq.IQueryable<global::ApplicationData.Implementation.Prisoner> query;
+            query = base.CreateQuery<global::ApplicationData.Implementation.Prisoner>("[Prisoners]").AsQueryable();
+            return query;
+        }
+    
     #endregion
 
     #region Protected Methods
@@ -285,6 +355,10 @@ namespace LightSwitchApplication.Implementation
             if (type == typeof(global::ApplicationData.Implementation.Countries))
             {
                 return new global::ApplicationData.Implementation.Countries();
+            }
+            if (type == typeof(global::ApplicationData.Implementation.Prisoner))
+            {
+                return new global::ApplicationData.Implementation.Prisoner();
             }
     
             return base.CreateObject(type);
@@ -311,6 +385,10 @@ namespace LightSwitchApplication.Implementation
             if (typeof(T) == typeof(global::LightSwitchApplication.Countries))
             {
                 return new global::ApplicationData.Implementation.Countries();
+            }
+            if (typeof(T) == typeof(global::LightSwitchApplication.Prisoner))
+            {
+                return new global::ApplicationData.Implementation.Prisoner();
             }
             return null;
         }
@@ -368,6 +446,10 @@ namespace LightSwitchApplication.Implementation
             if (typeof(global::LightSwitchApplication.Countries) == definitionType)
             {
                 return typeof(global::ApplicationData.Implementation.Countries);
+            }
+            if (typeof(global::LightSwitchApplication.Prisoner) == definitionType)
+            {
+                return typeof(global::ApplicationData.Implementation.Prisoner);
             }
             return null;
         }
@@ -432,6 +514,22 @@ namespace ApplicationData.Implementation
             }
         }
         
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.Contacts.DetailsClass.IImplementation.Prisoner
+        {
+            get
+            {
+                return this.Prisoner;
+            }
+            set
+            {
+                this.Prisoner = (global::ApplicationData.Implementation.Prisoner)value;
+                if (this.__host != null)
+                {
+                    this.__host.RaisePropertyChanged("Prisoner");
+                }
+            }
+        }
+        
         #region IEntityImplementation Members
         private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
         
@@ -465,6 +563,9 @@ namespace ApplicationData.Implementation
         
             [global::System.ServiceModel.DomainServices.Server.Include]
             public global::ApplicationData.Implementation.Countries Country { get; set; }
+        
+            [global::System.ServiceModel.DomainServices.Server.Include]
+            public global::ApplicationData.Implementation.Prisoner Prisoner { get; set; }
         
         }
     }
@@ -549,6 +650,71 @@ namespace ApplicationData.Implementation
             }
         }
         #endregion
+    }
+    
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "10.0.0.0")]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+    [global::System.ComponentModel.DataAnnotations.MetadataType(typeof(global::ApplicationData.Implementation.Prisoner.Metadata))]
+    public partial class Prisoner :
+        global::LightSwitchApplication.Prisoner.DetailsClass.IImplementation
+    {
+    
+        global::Microsoft.LightSwitch.Internal.IEntityImplementation global::LightSwitchApplication.Prisoner.DetailsClass.IImplementation.ContactId
+        {
+            get
+            {
+                return this.ContactId;
+            }
+            set
+            {
+                this.ContactId = (global::ApplicationData.Implementation.Contacts)value;
+                if (this.__host != null)
+                {
+                    this.__host.RaisePropertyChanged("ContactId");
+                }
+            }
+        }
+        
+        partial void OnIdChanged()
+        {
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged("ContactId");
+            }
+        }
+        
+        #region IEntityImplementation Members
+        private global::Microsoft.LightSwitch.Internal.IEntityImplementationHost __host;
+        
+        global::Microsoft.LightSwitch.Internal.IEntityImplementationHost global::Microsoft.LightSwitch.Internal.IEntityImplementation.Host
+        {
+            get
+            {
+                return this.__host;
+            }
+        }
+        
+        void global::Microsoft.LightSwitch.Internal.IEntityImplementation.Initialize(global::Microsoft.LightSwitch.Internal.IEntityImplementationHost host)
+        {
+            this.__host = host;
+        }
+        
+        protected override void OnPropertyChanged(string propertyName)
+        {
+            base.OnPropertyChanged(propertyName);
+            if (this.__host != null)
+            {
+                this.__host.RaisePropertyChanged(propertyName);
+            }
+        }
+        #endregion
+        
+        internal class Metadata
+        {
+            [global::System.ServiceModel.DomainServices.Server.Include]
+            public global::ApplicationData.Implementation.Contacts ContactId { get; set; }
+        
+        }
     }
     
 }

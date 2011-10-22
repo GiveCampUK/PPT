@@ -25,6 +25,7 @@
         <MappingFragment StoreEntitySet="ContactTypesSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -33,6 +34,14 @@
         <MappingFragment StoreEntitySet="CountriesSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prisoners">
+      <EntityTypeMapping TypeName="IsTypeOf(ApplicationData.Prisoner)">
+        <MappingFragment StoreEntitySet="Prisoners">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SomeData" ColumnName="SomeData" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
