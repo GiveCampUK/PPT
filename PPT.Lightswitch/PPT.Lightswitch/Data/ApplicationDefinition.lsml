@@ -992,7 +992,8 @@
               </ContentItem>
               <ContentItem DataType="Prisoner"
                            Kind="Details"
-                           Name="Prisoner">
+                           Name="Prisoner"
+                           IsHidden="True">
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
                     <ChainExpression>
