@@ -90,6 +90,16 @@
       <DependentUpon>ProgressBar.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Prisoner\Contact.cs" />
+    <Compile Include="Services\Prisoner\Lookup_Type.cs" />
+    <Compile Include="Services\Prisoner\Lookup_Response.cs" />
+    <Compile Include="Services\Prisoner\Lookup_Prisons.cs" />
+    <Compile Include="Services\Prisoner\Lookup_Letter_Writers.cs" />
+    <Compile Include="Services\Prisoner\Lookup_InstitutionType.cs" />
+    <Compile Include="Services\Prisoner\Lookup_Destination.cs" />
+    <Compile Include="Services\Prisoner\Lookup_Country.cs" />
+    <Compile Include="Services\Prisoner\Corresp.cs" />
+    <Compile Include="Services\Prisoner\Lookup_PostTown.cs" />
     <Compile Include="Services\Common\Country.cs" />
     <Compile Include="Services\DatabaseBuilderService.cs" />
     <Compile Include="Services\IDatabaseBuilderService.cs" />
@@ -128,7 +138,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\Friends\" />
-    <Folder Include="Services\Prisoner\" />
     <Folder Include="Services\Yoga\" />
   </ItemGroup>
   <ItemGroup>
