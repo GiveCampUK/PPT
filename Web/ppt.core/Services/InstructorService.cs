@@ -1,4 +1,4 @@
-﻿using ppt.core.Entities;
+using ppt.core.Entities;
 using ppt.core.Requests;
 using Raven.Client;
 
