@@ -11,6 +11,9 @@ _ReSharper.*
 *.user
 *.dotcover
 
+# Merge artifacts
+*.orig
+
 Web/source/ppt.web/App_Data/TEMP/*
 *.LDF
 
