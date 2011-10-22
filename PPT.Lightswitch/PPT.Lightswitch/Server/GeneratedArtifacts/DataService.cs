@@ -357,16 +357,16 @@ namespace LightSwitchApplication
         partial void Prisoners_SingleOrDefault_CanExecute(ref bool result);
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Prisoners_SingleOrDefault_Executing(global::System.Nullable<int> Id);
+        partial void Prisoners_SingleOrDefault_Executing(global::System.Nullable<int> ContactId);
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Prisoners_SingleOrDefault_PreprocessQuery(global::System.Nullable<int> Id, ref global::System.Linq.IQueryable<global::LightSwitchApplication.Prisoner> query);
+        partial void Prisoners_SingleOrDefault_PreprocessQuery(global::System.Nullable<int> ContactId, ref global::System.Linq.IQueryable<global::LightSwitchApplication.Prisoner> query);
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Prisoners_SingleOrDefault_Executed(global::System.Nullable<int> Id, global::System.Collections.Generic.IEnumerable<global::LightSwitchApplication.Prisoner> result);
+        partial void Prisoners_SingleOrDefault_Executed(global::System.Nullable<int> ContactId, global::System.Collections.Generic.IEnumerable<global::LightSwitchApplication.Prisoner> result);
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        partial void Prisoners_SingleOrDefault_ExecuteFailed(global::System.Nullable<int> Id, global::System.Exception exception);
+        partial void Prisoners_SingleOrDefault_ExecuteFailed(global::System.Nullable<int> ContactId, global::System.Exception exception);
     
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         partial void Prisoners_All_CanExecute(ref bool result);
