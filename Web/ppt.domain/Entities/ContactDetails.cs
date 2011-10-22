@@ -12,7 +12,8 @@
     public enum ContactRole
     {
         ServiceUser,
-        YogaTeacher,
+        Instructor,
+        Friend,
     }
 
     public class PhoneNumber
