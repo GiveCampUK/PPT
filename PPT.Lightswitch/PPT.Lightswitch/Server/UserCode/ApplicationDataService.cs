@@ -10,11 +10,11 @@ namespace LightSwitchApplication
     {
         partial void ContactsSet_Inserted(Contacts entity)
         {
-
-            if (entity != null)
+            if (entity != null && entity.PersonType.Name == "Prisoner")
             {
-                var prisoner = new Prisoner();
-
+                var prisoner = Prisoners.AddNew();
+                prisoner.ContactId = entity;
+                prisoner.SomeData = "Some prisoner data";
             }
         }
     }
