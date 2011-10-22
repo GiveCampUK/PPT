@@ -17,5 +17,17 @@ namespace LightSwitchApplication
                 prisoner.SomeData = "Some prisoner data";
             }
         }
+
+        partial void SearchByLastName_Executed(string LastName, IEnumerable<Contacts> result)
+        {
+            var prisonersWithMetaData = this.Prisoners.Where(x => x.SomeData != null)
+                                                      .Execute().ToList<Prisoner>();
+
+            foreach (var item in result)
+            {
+
+            }
+
+        }
     }
 }
