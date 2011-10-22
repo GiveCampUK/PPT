@@ -17,9 +17,9 @@ namespace ppt.core.Services
         {
             var Instructor = new Instructor
                                  {
-                                     ClassIds = new string[],
+                                     ClassIds = new string[]{},
                                      Type = InstructorType.Meditation
-                                 }
+                                 };
         }
     }
 }
