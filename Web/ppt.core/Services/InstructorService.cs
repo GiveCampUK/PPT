@@ -1,4 +1,4 @@
-﻿using ppt.core.Entities;
+using ppt.core.Entities;
 using ppt.core.Requests;
 using Raven.Client;
 
@@ -17,7 +17,7 @@ namespace ppt.core.Services
         {
             var Instructor = new Instructor
                                  {
-                                     ClassIds = new string[]{},
+                                     ClassIds = null,
                                      Type = InstructorType.Meditation
                                  };
         }

@@ -383,6 +383,21 @@ namespace LightSwitchApplication
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         partial void Prisoners_All_ExecuteFailed(global::System.Exception exception);
     
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void SearchByLastName_CanExecute(ref bool result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void SearchByLastName_Executing(string LastName);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void SearchByLastName_PreprocessQuery(string LastName, ref global::System.Linq.IQueryable<global::LightSwitchApplication.Contacts> query);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void SearchByLastName_Executed(string LastName, global::System.Collections.Generic.IEnumerable<global::LightSwitchApplication.Contacts> result);
+    
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Advanced)]
+        partial void SearchByLastName_ExecuteFailed(string LastName, global::System.Exception exception);
+    
         #endregion
     
         #region Details Class
@@ -1088,6 +1103,39 @@ namespace LightSwitchApplication
             {
                 global::System.Linq.IQueryable<global::LightSwitchApplication.Prisoner> query = (global::System.Linq.IQueryable<global::LightSwitchApplication.Prisoner>)args[0];
                 d.Prisoners_All_PreprocessQuery(ref query);
+                return query;
+            }
+            
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private static readonly global::Microsoft.LightSwitch.Details.Framework.Server.QueryOperationEntry<global::LightSwitchApplication.ApplicationDataService, global::LightSwitchApplication.Contacts>
+                __SearchByLastNameEntry = new global::Microsoft.LightSwitch.Details.Framework.Server.QueryOperationEntry<global::LightSwitchApplication.ApplicationDataService, global::LightSwitchApplication.Contacts>(
+                    "SearchByLastName",
+                    global::LightSwitchApplication.ApplicationDataService.DetailsClass.__SearchByLastName_CanExecute,
+                    global::LightSwitchApplication.ApplicationDataService.DetailsClass.__SearchByLastName_Executing,
+                    global::LightSwitchApplication.ApplicationDataService.DetailsClass.__SearchByLastName_Executed,
+                    global::LightSwitchApplication.ApplicationDataService.DetailsClass.__SearchByLastName_Failed,
+                    global::LightSwitchApplication.ApplicationDataService.DetailsClass.__SearchByLastName_PreprocessQuery);
+            private static bool __SearchByLastName_CanExecute(global::LightSwitchApplication.ApplicationDataService d, bool r)
+            {
+                d.SearchByLastName_CanExecute(ref r);
+                return r;
+            }
+            private static void __SearchByLastName_Executing(global::LightSwitchApplication.ApplicationDataService d, object[] args)
+            {
+                d.SearchByLastName_Executing((string)args[0]);
+            }
+            private static void __SearchByLastName_Executed(global::LightSwitchApplication.ApplicationDataService d, object[] args)
+            {
+                d.SearchByLastName_Executed((string)args[0], (global::System.Collections.Generic.IEnumerable<global::LightSwitchApplication.Contacts>)args[1]);
+            }
+            private static void __SearchByLastName_Failed(global::LightSwitchApplication.ApplicationDataService d, object[] args, global::System.Exception ex)
+            {
+                d.SearchByLastName_ExecuteFailed((string)args[0], ex);
+            }
+            private static global::System.Linq.IQueryable __SearchByLastName_PreprocessQuery(global::LightSwitchApplication.ApplicationDataService d, object[] args)
+            {
+                global::System.Linq.IQueryable<global::LightSwitchApplication.Contacts> query = (global::System.Linq.IQueryable<global::LightSwitchApplication.Contacts>)args[1];
+                d.SearchByLastName_PreprocessQuery((string)args[0], ref query);
                 return query;
             }
     

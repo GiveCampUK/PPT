@@ -13,8 +13,35 @@ namespace LightSwitchApplication
     {
         partial void ContactList_Activated()
         {
-            // Write your code here.
 
+        }
+
+        partial void ContactsSet_SelectionChanged()
+        {
+            if (ContactsSet.SelectedItem.PersonType != null)
+            {
+                switch (ContactsSet.SelectedItem.PersonType.Name)
+                {
+                    case "Prisoner":
+                        // Hide irrelevant tabs
+                        Show("Prisoner");
+                        break;
+
+                    default:
+                        Hide("Prisoner");
+                        break;
+                }
+            }
+        }
+
+        private void Hide(string controlName)
+        {
+            this.FindControl(controlName).IsVisible = false;
+        }
+
+        private void Show(string controlName)
+        {
+            this.FindControl(controlName).IsVisible = true;
         }
 
         partial void ContactList_Saving(ref bool handled)
@@ -30,6 +57,5 @@ namespace LightSwitchApplication
             // Write your code here.
             
         }
-
     }
 }
