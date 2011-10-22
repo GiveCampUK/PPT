@@ -22,9 +22,9 @@
           <ShowScreenMethod TargetScreen="CountryList" />
         </ApplicationMethod.Attributes>
       </ApplicationMethod>
-      <ApplicationMethod Name="ShowCreateNewContacts">
+      <ApplicationMethod Name="ShowPrisonersByLastName">
         <ApplicationMethod.Attributes>
-          <ShowScreenMethod TargetScreen="CreateNewContacts" />
+          <ShowScreenMethod TargetScreen="PrisonersByLastName" />
         </ApplicationMethod.Attributes>
       </ApplicationMethod>
     </Application.Methods>
@@ -40,12 +40,22 @@
         </ApplicationNavigationGroup.Attributes>
         <ApplicationNavigationLink Command="!module/Commands[ScreenCommandShowContactList]"
                                    Name="ContactList" />
-        <ApplicationNavigationLink Command="!module/Commands[ScreenCommandShowContactTypesList]"
-                                   Name="ContactTypesList" />
+      </ApplicationNavigationGroup>
+      <ApplicationNavigationGroup Name="group">
+        <ApplicationNavigationGroup.Attributes>
+          <DisplayName Value="Searches" />
+        </ApplicationNavigationGroup.Attributes>
+        <ApplicationNavigationLink Command="!module/Commands[ScreenCommandShowPrisonersByLastName]"
+                                   Name="link" />
+      </ApplicationNavigationGroup>
+      <ApplicationNavigationGroup Name="group1">
+        <ApplicationNavigationGroup.Attributes>
+          <DisplayName Value="Lookup Data" />
+        </ApplicationNavigationGroup.Attributes>
         <ApplicationNavigationLink Command="!module/Commands[ScreenCommandShowCountryList]"
-                                   Name="CountryList" />
-        <ApplicationNavigationLink Command="!module/Commands[ScreenCommandShowCreateNewContacts]"
-                                   Name="CreateNewContacts" />
+                                   Name="link1" />
+        <ApplicationNavigationLink Command="!module/Commands[ScreenCommandShowContactTypesList]"
+                                   Name="link2" />
       </ApplicationNavigationGroup>
       <ApplicationNavigationGroup Name="Administration">
         <ApplicationNavigationGroup.Attributes>
@@ -63,8 +73,8 @@
                         Target="!module/Methods[ShowContactTypesList]" />
     <ApplicationCommand Name="ScreenCommandShowCountryList"
                         Target="!module/Methods[ShowCountryList]" />
-    <ApplicationCommand Name="ScreenCommandShowCreateNewContacts"
-                        Target="!module/Methods[ShowCreateNewContacts]" />
+    <ApplicationCommand Name="ScreenCommandShowPrisonersByLastName"
+                        Target="!module/Methods[ShowPrisonersByLastName]" />
   </Application>
 
   <EntityContainerGroup Name="DataWorkspace">
@@ -446,6 +456,31 @@
       <AssociationSetEnd EntitySet="ContactsSet"
                          Name="Contacts" />
     </AssociationSet>
+    <QueryOperation Name="SearchByLastName"
+                    ReturnType="Contacts*">
+      <QueryOperation.FilterExpression>
+        <QueryFilterExpressionTree>
+          <BinaryExpression NodeType="Equal">
+            <BinaryExpression.Left>
+              <ChainExpression>
+                <MemberExpression Member="LastName" />
+              </ChainExpression>
+            </BinaryExpression.Left>
+            <BinaryExpression.Right>
+              <ParameterExpression  Parameter="LastName" />
+            </BinaryExpression.Right>
+          </BinaryExpression>
+        </QueryFilterExpressionTree>
+      </QueryOperation.FilterExpression>
+      <QueryOperation.Source>
+        <QuerySourceExpressionTree>
+          <MemberExpression Member="ContactsSet" />
+        </QuerySourceExpressionTree>
+      </QueryOperation.Source>
+      <QueryOperationParameter Name="LastName"
+                               ParameterType=":String?" />
+    </QueryOperation>
+  
   </EntityContainer>
 
   
@@ -1506,8 +1541,8 @@
     </AssociationEnd>
   </Association>
 
-  <Screen LaunchMode="Multiple"
-          Name="CreateNewContacts">
+  
+  <Screen Name="PrisonersByLastName">
     <Screen.Attributes>
       <SaveChangesTo DataService="ApplicationDataMapping" />
     </Screen.Attributes>
@@ -1534,8 +1569,36 @@
       </ScreenMethod>
     </Screen.Methods>
     <Screen.Properties>
-      <ScreenProperty Name="ContactsProperty"
-                      PropertyType="Contacts" />
+      <ScreenCollectionProperty Name="SearchByLastName"
+                                PageSize="45"
+                                PropertyType="CollectionView$Contacts">
+        <ScreenCollectionProperty.Query>
+          <ScreenQueryDefinition Name="SearchByLastNameQuery"
+                                 ReturnType="Contacts*">
+            <ScreenQueryDefinition.FilterExpression>
+              <QueryFilterExpressionTree />
+            </ScreenQueryDefinition.FilterExpression>
+            <ScreenQueryDefinition.Source>
+              <QuerySourceExpressionTree>
+                <MemberExpression Member="ApplicationData/Members[SearchByLastName]" />
+              </QuerySourceExpressionTree>
+            </ScreenQueryDefinition.Source>
+          </ScreenQueryDefinition>
+        </ScreenCollectionProperty.Query>
+        <ScreenExpressionTree>
+          <ChainExpression>
+            <CallExpression Target="PrisonersByLastName/Properties[SearchByLastName]/Query">
+              <ArgumentExpression Parameter="LastName">
+                <ChainExpression>
+                  <MemberExpression Member="PrisonersByLastName/Properties[ContactsLastName]" />
+                </ChainExpression>
+              </ArgumentExpression>
+            </CallExpression>
+          </ChainExpression>
+        </ScreenExpressionTree>
+      </ScreenCollectionProperty>
+      <ScreenProperty Name="ContactsLastName"
+                      PropertyType=":String" />
     </Screen.Properties>
     <Screen.RootContentItem>
       <ContentItem Kind="Screen"
@@ -1546,7 +1609,7 @@
             <ContentItem.DataSource>
               <ScreenExpressionTree>
                 <ChainExpression>
-                  <CallExpression Target="CreateNewContacts/Methods[Save]" />
+                  <CallExpression Target="PrisonersByLastName/Methods[Save]" />
                 </ChainExpression>
               </ScreenExpressionTree>
             </ContentItem.DataSource>
@@ -1556,56 +1619,103 @@
             <ContentItem.DataSource>
               <ScreenExpressionTree>
                 <ChainExpression>
-                  <CallExpression Target="CreateNewContacts/Methods[Refresh]" />
+                  <CallExpression Target="PrisonersByLastName/Methods[Refresh]" />
                 </ChainExpression>
               </ScreenExpressionTree>
             </ContentItem.DataSource>
           </ContentItem>
         </ContentItem.CommandItems>
         <ContentItem Kind="Group"
-                     Name="ScreenLayout">
-          <ContentItem.PropertySources>
-            <ControlPropertySource Property=":ScrollableControl/Properties[IsVerticalScrollBarEnabled]">
-              <ScreenExpressionTree>
-                <ChainExpression>
-                  <ConstantExpression ResultType=":Boolean"
-                                      Value="True" />
-                </ChainExpression>
-              </ScreenExpressionTree>
-            </ControlPropertySource>
-          </ContentItem.PropertySources>
-          <ContentItem DataType="Contacts"
-                       Kind="Details"
-                       Name="details"
-                       View="Microsoft.LightSwitch:RowsLayout">
-            <ContentItem.DataSource>
-              <ScreenExpressionTree>
-                <ChainExpression>
-                  <MemberExpression Member="CreateNewContacts/Properties[ContactsProperty]" />
-                </ChainExpression>
-              </ScreenExpressionTree>
-            </ContentItem.DataSource>
+                     Name="ScreenLayout"
+                     View="Microsoft.LightSwitch:ColumnsLayout">
+          <ContentItem Kind="Group"
+                       Name="ListColumn">
             <ContentItem.PropertySources>
-              <ControlPropertySource Property=":RootControl/Properties[VerticalAlignment]">
+              <ControlPropertySource Property=":ColumnsLayout/Properties[WeightedColumnWidth]">
                 <ScreenExpressionTree>
                   <ChainExpression>
-                    <ConstantExpression ResultType=":String"
-                                        Value="Top" />
+                    <ConstantExpression ResultType=":Double"
+                                        Value="2" />
                   </ChainExpression>
                 </ScreenExpressionTree>
               </ControlPropertySource>
             </ContentItem.PropertySources>
-            <ContentItem DataType="ContactTypes"
-                         Kind="Details"
-                         Name="PersonType">
+            <ContentItem DataType=":String"
+                         Kind="Value"
+                         Name="ContactsLastName">
               <ContentItem.DataSource>
                 <ScreenExpressionTree>
                   <ChainExpression>
-                    <MemberExpression Member="Contacts/Properties[PersonType]" />
+                    <MemberExpression Member="PrisonersByLastName/Properties[ContactsLastName]" />
                   </ChainExpression>
                 </ScreenExpressionTree>
               </ContentItem.DataSource>
-              <ContentItem DataType="ContactTypes"
+            </ContentItem>
+            <ContentItem DataType="CollectionView$Contacts"
+                         Kind="Collection"
+                         Name="ContactsList"
+                         View="Microsoft.LightSwitch:List">
+              <ContentItem.CommandItems>
+                <ContentItem Kind="Command"
+                             Name="SearchByLastName_AddAndEditNew">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="PrisonersByLastName/Properties[SearchByLastName]" />
+                        <CallExpression Target="AddAndEditNew" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem Kind="Command"
+                             Name="SearchByLastName_EditSelected">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="PrisonersByLastName/Properties[SearchByLastName]" />
+                        <CallExpression Target="EditSelected" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem Kind="Command"
+                             Name="SearchByLastName_DeleteSelected">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="PrisonersByLastName/Properties[SearchByLastName]" />
+                        <CallExpression Target="DeleteSelected" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem.CommandItems>
+              <ContentItem.DataSource>
+                <ScreenExpressionTree>
+                  <ChainExpression>
+                    <MemberExpression Member="PrisonersByLastName/Properties[SearchByLastName]" />
+                  </ChainExpression>
+                </ScreenExpressionTree>
+              </ContentItem.DataSource>
+              <ContentItem.PropertySources>
+                <ControlPropertySource Property=":RootControl/Properties[AttachedLabelPosition]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression ResultType=":String"
+                                          Value="Collapsed" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+                <ControlPropertySource Property=":RootControl/Properties[VerticalAlignment]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression ResultType=":String"
+                                          Value="Stretch" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+              <ContentItem DataType="Contacts"
                            Kind="Details"
                            Name="RowTemplate">
                 <ContentItem.DataSource>
@@ -1613,154 +1723,383 @@
                     <ChainExpression />
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
+                <ContentItem DataType="ContactTypes"
+                             Kind="Details"
+                             Name="PersonType">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="Contacts/Properties[PersonType]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem DataType="ContactTypes"
+                               Kind="Details"
+                               Name="RowTemplate1">
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression />
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                  </ContentItem>
+                </ContentItem>
+                <ContentItem DataType=":String"
+                             Kind="Value"
+                             Name="Title">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="Contacts/Properties[Title]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem DataType=":String"
+                             Kind="Value"
+                             Name="FirstName">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="Contacts/Properties[FirstName]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem DataType=":String"
+                             Kind="Value"
+                             Name="LastName">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="Contacts/Properties[LastName]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem DataType=":String"
+                             Kind="Value"
+                             Name="Line1">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="Contacts/Properties[Line1]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem DataType=":String"
+                             Kind="Value"
+                             Name="Line2">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="Contacts/Properties[Line2]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem DataType=":String"
+                             Kind="Value"
+                             Name="Line3">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="Contacts/Properties[Line3]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem DataType=":String"
+                             Kind="Value"
+                             Name="Town">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="Contacts/Properties[Town]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem DataType=":String"
+                             Kind="Value"
+                             Name="County">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="Contacts/Properties[County]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem DataType=":String"
+                             Kind="Value"
+                             Name="Postcode">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="Contacts/Properties[Postcode]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem DataType="Countries"
+                             Kind="Details"
+                             Name="Country">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="Contacts/Properties[Country]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                  <ContentItem DataType="Countries"
+                               Kind="Details"
+                               Name="RowTemplate2">
+                    <ContentItem.DataSource>
+                      <ScreenExpressionTree>
+                        <ChainExpression />
+                      </ScreenExpressionTree>
+                    </ContentItem.DataSource>
+                  </ContentItem>
+                </ContentItem>
+                <ContentItem DataType=":String"
+                             Kind="Value"
+                             Name="PhoneNumbers">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="Contacts/Properties[PhoneNumbers]" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem DataType=":String"
+                             Kind="Value"
+                             Name="SomeData">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <MemberExpression Member="Contacts/Properties[Prisoner]" />
+                        <MemberExpression Member="SomeData" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
               </ContentItem>
             </ContentItem>
-            <ContentItem DataType=":String"
-                         Kind="Value"
-                         Name="Title">
-              <ContentItem.DataSource>
+          </ContentItem>
+          <ContentItem Kind="Group"
+                       Name="DetailsColumn">
+            <ContentItem.PropertySources>
+              <ControlPropertySource Property=":ScrollableControl/Properties[IsVerticalScrollBarEnabled]">
                 <ScreenExpressionTree>
                   <ChainExpression>
-                    <MemberExpression Member="Contacts/Properties[Title]" />
+                    <ConstantExpression ResultType=":Boolean"
+                                        Value="True" />
                   </ChainExpression>
                 </ScreenExpressionTree>
-              </ContentItem.DataSource>
-            </ContentItem>
-            <ContentItem DataType=":String"
-                         Kind="Value"
-                         Name="FirstName">
-              <ContentItem.DataSource>
+              </ControlPropertySource>
+              <ControlPropertySource Property=":ColumnsLayout/Properties[WeightedColumnWidth]">
                 <ScreenExpressionTree>
                   <ChainExpression>
-                    <MemberExpression Member="Contacts/Properties[FirstName]" />
+                    <ConstantExpression ResultType=":Double"
+                                        Value="3" />
                   </ChainExpression>
                 </ScreenExpressionTree>
-              </ContentItem.DataSource>
-            </ContentItem>
-            <ContentItem DataType=":String"
-                         Kind="Value"
-                         Name="LastName">
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression>
-                    <MemberExpression Member="Contacts/Properties[LastName]" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
-            </ContentItem>
-            <ContentItem DataType=":String"
-                         Kind="Value"
-                         Name="Line1">
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression>
-                    <MemberExpression Member="Contacts/Properties[Line1]" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
-            </ContentItem>
-            <ContentItem DataType=":String"
-                         Kind="Value"
-                         Name="Line2">
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression>
-                    <MemberExpression Member="Contacts/Properties[Line2]" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
-            </ContentItem>
-            <ContentItem DataType=":String"
-                         Kind="Value"
-                         Name="Line3">
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression>
-                    <MemberExpression Member="Contacts/Properties[Line3]" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
-            </ContentItem>
-            <ContentItem DataType=":String"
-                         Kind="Value"
-                         Name="Town">
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression>
-                    <MemberExpression Member="Contacts/Properties[Town]" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
-            </ContentItem>
-            <ContentItem DataType=":String"
-                         Kind="Value"
-                         Name="County">
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression>
-                    <MemberExpression Member="Contacts/Properties[County]" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
-            </ContentItem>
-            <ContentItem DataType=":String"
-                         Kind="Value"
-                         Name="Postcode">
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression>
-                    <MemberExpression Member="Contacts/Properties[Postcode]" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
-            </ContentItem>
-            <ContentItem DataType="Countries"
+              </ControlPropertySource>
+            </ContentItem.PropertySources>
+            <ContentItem DataType="Contacts"
                          Kind="Details"
-                         Name="Country">
+                         Name="ContactsDetails">
+              <ContentItem.Attributes>
+                <DisplayName Value="Contacts Details" />
+              </ContentItem.Attributes>
               <ContentItem.DataSource>
                 <ScreenExpressionTree>
                   <ChainExpression>
-                    <MemberExpression Member="Contacts/Properties[Country]" />
+                    <MemberExpression Member="PrisonersByLastName/Properties[SearchByLastName]" />
+                    <MemberExpression Member="SelectedItem" />
                   </ChainExpression>
                 </ScreenExpressionTree>
               </ContentItem.DataSource>
-              <ContentItem DataType="Countries"
+              <ContentItem.PropertySources>
+                <ControlPropertySource Property=":RootControl/Properties[VerticalAlignment]">
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <ConstantExpression ResultType=":String"
+                                          Value="Top" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ControlPropertySource>
+              </ContentItem.PropertySources>
+              <ContentItem DataType="ContactTypes"
                            Kind="Details"
-                           Name="RowTemplate1">
+                           Name="PersonType1">
                 <ContentItem.DataSource>
                   <ScreenExpressionTree>
-                    <ChainExpression />
+                    <ChainExpression>
+                      <MemberExpression Member="Contacts/Properties[PersonType]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+                <ContentItem DataType="ContactTypes"
+                             Kind="Details"
+                             Name="RowTemplate3">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression />
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="Title1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="Contacts/Properties[Title]" />
+                    </ChainExpression>
                   </ScreenExpressionTree>
                 </ContentItem.DataSource>
               </ContentItem>
-            </ContentItem>
-            <ContentItem DataType=":String"
-                         Kind="Value"
-                         Name="PhoneNumbers">
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression>
-                    <MemberExpression Member="Contacts/Properties[PhoneNumbers]" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
-            </ContentItem>
-            <ContentItem DataType=":String"
-                         Kind="Value"
-                         Name="SomeData">
-              <ContentItem.DataSource>
-                <ScreenExpressionTree>
-                  <ChainExpression>
-                    <MemberExpression Member="Contacts/Properties[Prisoner]" />
-                    <MemberExpression Member="SomeData" />
-                  </ChainExpression>
-                </ScreenExpressionTree>
-              </ContentItem.DataSource>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="FirstName1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="Contacts/Properties[FirstName]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="LastName1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="Contacts/Properties[LastName]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="Line11">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="Contacts/Properties[Line1]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="Line21">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="Contacts/Properties[Line2]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="Line31">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="Contacts/Properties[Line3]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="Town1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="Contacts/Properties[Town]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="County1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="Contacts/Properties[County]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="Postcode1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="Contacts/Properties[Postcode]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType="Countries"
+                           Kind="Details"
+                           Name="Country1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="Contacts/Properties[Country]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+                <ContentItem DataType="Countries"
+                             Kind="Details"
+                             Name="RowTemplate4">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression />
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+              </ContentItem>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="PhoneNumbers1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="Contacts/Properties[PhoneNumbers]" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
+              <ContentItem DataType=":String"
+                           Kind="Value"
+                           Name="SomeData1">
+                <ContentItem.DataSource>
+                  <ScreenExpressionTree>
+                    <ChainExpression>
+                      <MemberExpression Member="Contacts/Properties[Prisoner]" />
+                      <MemberExpression Member="SomeData" />
+                    </ChainExpression>
+                  </ScreenExpressionTree>
+                </ContentItem.DataSource>
+              </ContentItem>
             </ContentItem>
           </ContentItem>
         </ContentItem>
       </ContentItem>
     </Screen.RootContentItem>
   </Screen>
+
 
 </ModelFragment>

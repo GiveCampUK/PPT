@@ -206,6 +206,11 @@ namespace LightSwitchApplication.Implementation
             return this.GetQuery<global::ApplicationData.Implementation.Prisoner>("Prisoners_All", frameworkOperators);
         }
     
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Contacts> SearchByLastName(string frameworkOperators, string LastName)
+        {
+            return this.GetQuery<global::ApplicationData.Implementation.Contacts>("SearchByLastName", frameworkOperators, LastName);
+        }
+    
     #endregion
     
         [global::System.ServiceModel.DomainServices.Server.Invoke(HasSideEffects=false)]
@@ -336,6 +341,15 @@ namespace LightSwitchApplication.Implementation
         {
             global::System.Linq.IQueryable<global::ApplicationData.Implementation.Prisoner> query;
             query = base.CreateQuery<global::ApplicationData.Implementation.Prisoner>("[Prisoners]").AsQueryable();
+            return query;
+        }
+    
+        public global::System.Linq.IQueryable<global::ApplicationData.Implementation.Contacts> SearchByLastName(string LastName)
+        {
+            global::System.Linq.IQueryable<global::ApplicationData.Implementation.Contacts> query;
+            query = global::System.Linq.Queryable.Where(
+                this.GetQuery<global::ApplicationData.Implementation.Contacts>("ContactsSet_All"),
+                (c) => (c.LastName.CompareTo(LastName) == 0));
             return query;
         }
     
