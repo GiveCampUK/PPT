@@ -1,4 +1,5 @@
 ﻿using ppt.core.Entities;
+using ppt.core.Requests;
 using Raven.Client;
 
 namespace ppt.core.Services
@@ -12,9 +13,13 @@ namespace ppt.core.Services
             _session = session;
         }
 
-        public void RegisterInstructor(Instructor instructor)
+        public void RegisterInstructor(InstructorRegistrationRequest instructor)
         {
-            
+            var Instructor = new Instructor
+                                 {
+                                     ClassIds = new string[],
+                                     Type = InstructorType.Meditation
+                                 }
         }
     }
 }
