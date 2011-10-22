@@ -54,9 +54,14 @@
   <ItemGroup>
     <Compile Include="Global.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Common\CountryFixture.cs" />
+    <Compile Include="Services\Friends\CountryFixture.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Ppt.DataMigration\Ppt.DataMigration.csproj">
+      <Project>{CAAB1BA3-1E74-4A12-A757-4317E64DB672}</Project>
+      <Name>Ppt.DataMigration</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
