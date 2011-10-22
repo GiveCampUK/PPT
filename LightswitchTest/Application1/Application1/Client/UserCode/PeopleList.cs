@@ -15,11 +15,19 @@ namespace LightSwitchApplication
         {
             System.Diagnostics.Debug.WriteLine("boo ya");
             // Write your code here.
-            
+            var prisonsCalledBob = this.DataWorkspace.ApplicationData.Prisons.Where(x => x.Name == "Bob").FirstOrDefault();
+            System.Diagnostics.Debug.WriteLine(prisonsCalledBob.Name);
+        
 
         }
 
         partial void DoMethod1_Execute()
+        {
+            // Write your code here.
+
+        }
+
+        partial void Method1_Execute()
         {
             // Write your code here.
 

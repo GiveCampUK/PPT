@@ -603,6 +603,18 @@ namespace LightSwitchApplication
         partial void DoMethod1_CanExecute(ref bool result);
         partial void DoMethod1_Execute();
 
+        /// <summary>
+        /// Calls the Method1 screen method.
+        /// </summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "10.0.0.0")]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public void Method1()
+        {
+            this.Details.Methods.Method1.CreateInvocation().Execute();
+        }
+        partial void Method1_CanExecute(ref bool result);
+        partial void Method1_Execute();
+
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "10.0.0.0")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -705,10 +717,16 @@ namespace LightSwitchApplication
             private global::Microsoft.LightSwitch.Details.Framework.Client.ScreenCommand<global::LightSwitchApplication.PeopleList, global::LightSwitchApplication.PeopleList.DetailsClass>.Data _DoMethod1Command;
 
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private global::Microsoft.LightSwitch.Details.Framework.Client.ScreenCommand<global::LightSwitchApplication.PeopleList, global::LightSwitchApplication.PeopleList.DetailsClass>.Data _Method1Command;
+
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
             private global::Microsoft.LightSwitch.Details.Framework.Client.ScreenMethod<global::LightSwitchApplication.PeopleList, global::LightSwitchApplication.PeopleList.DetailsClass>.Data _MethodMethod;
 
             [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
             private global::Microsoft.LightSwitch.Details.Framework.Client.ScreenMethod<global::LightSwitchApplication.PeopleList, global::LightSwitchApplication.PeopleList.DetailsClass>.Data _DoMethod1Method;
+
+            [global::System.Diagnostics.DebuggerBrowsable(global::System.Diagnostics.DebuggerBrowsableState.Never)]
+            private global::Microsoft.LightSwitch.Details.Framework.Client.ScreenMethod<global::LightSwitchApplication.PeopleList, global::LightSwitchApplication.PeopleList.DetailsClass>.Data _Method1Method;
 
             [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.LightSwitch.BuildTasks.CodeGen", "10.0.0.0")]
@@ -750,6 +768,14 @@ namespace LightSwitchApplication
                     }
                 }
 
+                public global::Microsoft.LightSwitch.Details.Framework.Client.ScreenCommand<global::LightSwitchApplication.PeopleList, global::LightSwitchApplication.PeopleList.DetailsClass> Method1
+                {
+                    get
+                    {
+                        return (global::Microsoft.LightSwitch.Details.Framework.Client.ScreenCommand<global::LightSwitchApplication.PeopleList, global::LightSwitchApplication.PeopleList.DetailsClass>)base.GetItem(global::LightSwitchApplication.PeopleList.DetailsClass.CommandSetProperties.Method1);
+                    }
+                }
+
             }
 
             [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
@@ -772,6 +798,14 @@ namespace LightSwitchApplication
                     get
                     {
                         return (global::Microsoft.LightSwitch.Details.Framework.Client.ScreenMethod<global::LightSwitchApplication.PeopleList, global::LightSwitchApplication.PeopleList.DetailsClass>)base.GetItem(global::LightSwitchApplication.PeopleList.DetailsClass.MethodSetProperties.DoMethod1);
+                    }
+                }
+
+                public global::Microsoft.LightSwitch.Details.Framework.Client.ScreenMethod<global::LightSwitchApplication.PeopleList, global::LightSwitchApplication.PeopleList.DetailsClass> Method1
+                {
+                    get
+                    {
+                        return (global::Microsoft.LightSwitch.Details.Framework.Client.ScreenMethod<global::LightSwitchApplication.PeopleList, global::LightSwitchApplication.PeopleList.DetailsClass>)base.GetItem(global::LightSwitchApplication.PeopleList.DetailsClass.MethodSetProperties.Method1);
                     }
                 }
 
@@ -853,6 +887,20 @@ namespace LightSwitchApplication
                     return ((global::LightSwitchApplication.PeopleList.DetailsClass)d).Methods.DoMethod1.CreateInvocation();
                 }
 
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.Client.ScreenCommand<global::LightSwitchApplication.PeopleList, global::LightSwitchApplication.PeopleList.DetailsClass>.Entry
+                    Method1 = new global::Microsoft.LightSwitch.Details.Framework.Client.ScreenCommand<global::LightSwitchApplication.PeopleList, global::LightSwitchApplication.PeopleList.DetailsClass>.Entry(
+                        "Method1",
+                        global::LightSwitchApplication.PeopleList.DetailsClass.CommandSetProperties._Method1_Stub,
+                        global::LightSwitchApplication.PeopleList.DetailsClass.CommandSetProperties._Method1_CreateExecutableObject);
+                private static void _Method1_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.PeopleList.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.Client.ScreenCommand<global::LightSwitchApplication.PeopleList, global::LightSwitchApplication.PeopleList.DetailsClass>.Data> c, global::LightSwitchApplication.PeopleList.DetailsClass d, object sf)
+                {
+                    c(d, ref d._Method1Command, sf);
+                }
+                private static global::Microsoft.LightSwitch.IExecutable _Method1_CreateExecutableObject(global::LightSwitchApplication.PeopleList.DetailsClass d)
+                {
+                    return ((global::LightSwitchApplication.PeopleList.DetailsClass)d).Methods.Method1.CreateInvocation();
+                }
+
             }
 
             [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
@@ -901,6 +949,27 @@ namespace LightSwitchApplication
                 private static void _DoMethod1_InvokeMethod(global::LightSwitchApplication.PeopleList.DetailsClass d, global::System.Collections.ObjectModel.ReadOnlyCollection<object> args)
                 {
                     d.Screen.DoMethod1_Execute();
+                }
+
+                public static readonly global::Microsoft.LightSwitch.Details.Framework.Client.ScreenMethod<global::LightSwitchApplication.PeopleList, global::LightSwitchApplication.PeopleList.DetailsClass>.Entry
+                    Method1 = new global::Microsoft.LightSwitch.Details.Framework.Client.ScreenMethod<global::LightSwitchApplication.PeopleList, global::LightSwitchApplication.PeopleList.DetailsClass>.Entry(
+                        "Method1",
+                        global::LightSwitchApplication.PeopleList.DetailsClass.MethodSetProperties._Method1_Stub,
+                        global::LightSwitchApplication.PeopleList.DetailsClass.MethodSetProperties._Method1_CanInvoke,
+                        global::LightSwitchApplication.PeopleList.DetailsClass.MethodSetProperties._Method1_InvokeMethod);
+                private static void _Method1_Stub(global::Microsoft.LightSwitch.Details.Framework.Base.DetailsCallback<global::LightSwitchApplication.PeopleList.DetailsClass, global::Microsoft.LightSwitch.Details.Framework.Client.ScreenMethod<global::LightSwitchApplication.PeopleList, global::LightSwitchApplication.PeopleList.DetailsClass>.Data> c, global::LightSwitchApplication.PeopleList.DetailsClass d, object sf)
+                {
+                    c(d, ref d._Method1Method, sf);
+                }
+                private static global::System.Exception _Method1_CanInvoke(global::LightSwitchApplication.PeopleList.DetailsClass d, global::System.Collections.ObjectModel.ReadOnlyCollection<object> args, global::System.Exception ex)
+                {
+                    bool result = true;
+                    d.Screen.Method1_CanExecute(ref result);
+                    return result ? null : ex;
+                }
+                private static void _Method1_InvokeMethod(global::LightSwitchApplication.PeopleList.DetailsClass d, global::System.Collections.ObjectModel.ReadOnlyCollection<object> args)
+                {
+                    d.Screen.Method1_Execute();
                 }
 
             }

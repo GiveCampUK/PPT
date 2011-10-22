@@ -1,4 +1,16 @@
 ﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="Microsoft.LightSwitch.Client.Internal" EntryPointType="Microsoft.LightSwitch.Runtime.Shell.Implementation.App" RuntimeVersion="4.0.60310.0">
+  <Deployment.OutOfBrowserSettings>
+    <OutOfBrowserSettings ShortName="Application1" EnableGPUAcceleration="False" ShowInstallMenuItem="True">
+      <OutOfBrowserSettings.Blurb>Application1</OutOfBrowserSettings.Blurb>
+      <OutOfBrowserSettings.WindowSettings>
+        <WindowSettings Title="Application1" Top="0" Left="0" WindowStartupLocation="Manual" />
+      </OutOfBrowserSettings.WindowSettings>
+      <OutOfBrowserSettings.SecuritySettings>
+        <SecuritySettings ElevatedPermissions="Required" />
+      </OutOfBrowserSettings.SecuritySettings>
+      <OutOfBrowserSettings.Icons />
+    </OutOfBrowserSettings>
+  </Deployment.OutOfBrowserSettings>
   <Deployment.Parts>
     <AssemblyPart x:Name="Application1.ClientGenerated" Source="Application1.ClientGenerated.dll" />
     <AssemblyPart x:Name="Application.Common" Source="Application.Common.dll" />

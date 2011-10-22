@@ -918,6 +918,7 @@
       </ScreenMethod>
       <ScreenMethod Name="Method" />
       <ScreenMethod Name="DoMethod1" />
+      <ScreenMethod Name="Method1" />
     </Screen.Methods>
     <Screen.Properties>
       <ScreenCollectionProperty Name="PeopleSet"
@@ -1017,6 +1018,16 @@
                       <ChainExpression>
                         <MemberExpression Member="PeopleList/Properties[PeopleSet]" />
                         <CallExpression Target="DeleteSelected" />
+                      </ChainExpression>
+                    </ScreenExpressionTree>
+                  </ContentItem.DataSource>
+                </ContentItem>
+                <ContentItem Kind="Command"
+                             Name="Method1">
+                  <ContentItem.DataSource>
+                    <ScreenExpressionTree>
+                      <ChainExpression>
+                        <CallExpression Target="PeopleList/Methods[Method1]" />
                       </ChainExpression>
                     </ScreenExpressionTree>
                   </ContentItem.DataSource>
