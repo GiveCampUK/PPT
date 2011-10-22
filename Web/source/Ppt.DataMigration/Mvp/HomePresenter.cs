@@ -74,6 +74,18 @@ namespace Ppt.DataMigration.Mvp
                 
                 _view.Progress.PercentComplete = 20;
 
+                #region BuildDatabase
+
+                SendMessage("Starting to rebuild the databases. Were getting out the hammer and nails");
+
+                DatabaseBuilderService dbBuilder = new DatabaseBuilderService();
+                dbBuilder.Build(connection);
+
+                SendMessage("Database rebuilt. Time for a tea break before we get started on the next task");
+
+                #endregion
+
+
 
                 #region YOGA
 
